@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>if [[ -n "$TM_SPHINX_DOC_AUTOMAKE" ]]; then
+
+	. "$TM_BUNDLE_SUPPORT/init.sh"
+
+	export TM_SPHINX_DOC_ERRORS_TMP_FILE="$errors_tmp_file"
+	export TM_SPHINX_DOC_AUTOMAKE_GLOBAL_REPORT
+
+	"$ruby" "$TM_BUNDLE_SUPPORT/save_hook.rb" "$TM_FILEPATH"
+fi</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@s</string>
+	<key>name</key>
+	<string>Auto Make on Save</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>source.sphinx.doc</string>
+	<key>uuid</key>
+	<string>E98957A1-EEA9-4C5F-A22C-C61A74599A6B</string>
+</dict>
+</plist>

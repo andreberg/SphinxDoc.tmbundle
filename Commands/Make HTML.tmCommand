@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+. "$TM_BUNDLE_SUPPORT/init.sh"
+. "$TM_BUNDLE_SUPPORT/sphinx_build.sh"
+
+html_header "Build" "Sphinx Doc"
+
+output=`run_sphinx_build redirect_stderr`
+
+IFS=$'\n'
+for line in $output; do
+  echo "$line&lt;br/&gt;"
+done 
+
+if [[ -s "$errors_tmp_file" ]]; then
+	"$ruby" "$TM_BUNDLE_SUPPORT/error_parser.rb" "$errors_tmp_file"
+fi
+
+html_footer</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@b</string>
+	<key>name</key>
+	<string>Build</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.sphinx</string>
+	<key>uuid</key>
+	<string>3B3EB310-60C1-41B0-A460-E2ED0E1BAD92</string>
+</dict>
+</plist>

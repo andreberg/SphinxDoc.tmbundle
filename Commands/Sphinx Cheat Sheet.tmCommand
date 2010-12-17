@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+
+html_header "reST Quick Ref" "Sphinx"
+
+echo "&lt;meta http-equiv=\"refresh\" content=\"0; tm-file://$TM_BUNDLE_SUPPORT/rst/quickref.html\"&gt;"
+
+html_footer
+
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>~</string>
+	<key>name</key>
+	<string>RST Quick Ref</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.sphinx.doc, text.restructuredtext</string>
+	<key>uuid</key>
+	<string>EC42CC9F-16D9-40C0-8097-F81F66E451E8</string>
+</dict>
+</plist>

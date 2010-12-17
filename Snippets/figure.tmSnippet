@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>.. figure:: ${1:path}
+   $0</string>
+	<key>name</key>
+	<string>figure</string>
+	<key>scope</key>
+	<string>text.restructuredtext, source.sphinx.doc</string>
+	<key>tabTrigger</key>
+	<string>image</string>
+	<key>uuid</key>
+	<string>5443CF0E-7AFD-476A-8B53-5A4CC0FEA77E</string>
+</dict>
+</plist>

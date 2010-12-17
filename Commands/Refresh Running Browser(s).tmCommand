@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>. "$TM_BUNDLE_SUPPORT/browser_refresh.sh"
+
+browser_refresh</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^R</string>
+	<key>name</key>
+	<string>Refresh Running Browser(s)</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>source.sphinx.doc, text.restructuredtext</string>
+	<key>uuid</key>
+	<string>0CAA55BB-73B8-4843-ABD8-D7793F9D1E37</string>
+</dict>
+</plist>

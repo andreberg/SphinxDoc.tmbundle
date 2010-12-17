@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Completions: reST Directives</string>
+	<key>scope</key>
+	<string>text.restructuredtext, source.sphinx.doc</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>
+			<string>attention</string>
+			<string>caution</string>
+			<string>danger</string>
+			<string>error</string>
+			<string>hint</string>
+			<string>important</string>
+			<string>note</string>
+			<string>tip</string>
+			<string>warning</string>
+			<string>admonition</string>
+			<string>image</string>
+			<string>figure</string>
+			<string>topic</string>
+			<string>sidebar</string>
+			<string>parsed-literal</string>
+			<string>rubric</string>
+			<string>epigraph</string>
+			<string>highlights</string>
+			<string>pull-quote</string>
+			<string>compound</string>
+			<string>container</string>
+			<string>table</string>
+			<string>list-table</string>
+			<string>csv-table</string>
+			<string>contents</string>
+			<string>sectnum</string>
+			<string>header</string>
+			<string>footer</string>
+			<string>target-notes</string>
+			<string>meta</string>
+			<string>include</string>
+			<string>raw</string>
+			<string>replace</string>
+			<string>unicode</string>
+			<string>date</string>
+			<string>class</string>
+			<string>role</string>
+			<string>default-role</string>
+			<string>title</string>
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>51469D27-FD31-43E5-97A1-B1489A5849E6</string>
+</dict>
+</plist>

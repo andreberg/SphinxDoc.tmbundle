@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Completions: Sphinx Directives</string>
+	<key>scope</key>
+	<string>source.sphinx.doc</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>
+			<string>toctree</string>
+			<string>module</string>
+			<string>moduleauthor</string>
+			<string>sectionauthor</string>
+			<string>class</string>
+			<string>function</string>
+			<string>func</string>
+			<string>ref</string>
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>B11CC30D-E195-418C-B01D-06C5559767D5</string>
+</dict>
+</plist>

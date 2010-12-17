@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Completions: Sphinx Options</string>
+	<key>scope</key>
+	<string>source.sphinx.doc</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>
+			<string>synopsis</string>
+			<string>height</string>
+			<string>width</string>
+			<string>scale</string>
+			<string>alt</string>
+			<string>align</string>
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>2122253C-CF10-4ECB-859B-583ACDAF4331</string>
+</dict>
+</plist>

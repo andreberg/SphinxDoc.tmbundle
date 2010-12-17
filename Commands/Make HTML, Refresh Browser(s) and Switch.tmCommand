@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+. "$TM_BUNDLE_SUPPORT/init.sh"
+. "$TM_BUNDLE_SUPPORT/sphinx_build.sh"
+. "$TM_BUNDLE_SUPPORT/browser_refresh.sh"
+
+html_header "Make HTML, Refresh Browser and Switch" "Sphinx Doc"
+
+output=`sphinx_build redirect_stderr`
+
+IFS=$'\n'
+for line in $output; do
+  echo "$line&lt;br/&gt;"
+done 
+
+html_footer
+
+browser_refresh "switch"</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@r</string>
+	<key>name</key>
+	<string>Build, Refresh Browser(s), and Switch</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.sphinx.doc</string>
+	<key>uuid</key>
+	<string>92E26FFE-634D-4EB0-83D7-C79A6E283B66</string>
+</dict>
+</plist>

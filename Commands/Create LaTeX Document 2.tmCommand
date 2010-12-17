@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>. "$TM_BUNDLE_SUPPORT/init.sh"
+
+if [[ -f "$TM_SPHINX_DOCUTILS_DIR/rst2newlatex.py" ]]; then
+	TRST="$TM_SPHINX_DOCUTILS_DIR/rst2newlatex.py"
+else
+	TRST=${TM_RST2LATEX:=rst2newlatex.py}
+	require_cmd "$TRST" "You can either set the &lt;tt&gt;TM_SPHINX_DOCUTILS_DIR&lt;/tt&gt; variable to the &lt;tt&gt;bin&lt;/tt&gt; path of your docutils (docutils.sourceforge.net) installation (e.g. &lt;tt&gt;/Library/Frameworks/Python.framework/Versions/Current/bin&lt;/tt&gt; or set the &lt;tt&gt;PATH&lt;/tt&gt; variable to include the path of the docutils converters. Alternatively, for fine-grained control, you can set the &lt;tt&gt;TM_RST2LATEX&lt;/tt&gt; variable to the full path of the &lt;tt&gt;rst2newlatex.py&lt;/tt&gt; file."
+fi
+
+output=`$TRST "$TM_FILEPATH" 2&gt; /dev/null`
+echo -e "$output"</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@B</string>
+	<key>name</key>
+	<string>Create LaTeX Document</string>
+	<key>output</key>
+	<string>openAsNewDocument</string>
+	<key>scope</key>
+	<string>text.restructuredtext, source.sphinx.doc</string>
+	<key>uuid</key>
+	<string>37B3A6C3-98D4-49FB-8B51-1AD4DD6D13ED</string>
+</dict>
+</plist>

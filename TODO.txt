@@ -1,0 +1,64 @@
+
+    SphinxDoc.tmbundle
+    ------------------
+    
+    TODO 
+        
+    Maintainer: André Berg
+    
+    Updated: 2010-12-17
+    
+    Legend: "-" => "feature topics"
+            "*" => "ongoing, tips, recommendations"
+            "√" => "done"
+
+
+- Finish the Language Grammar. Especially the down-belon region!
+
+- Add support for "Indentation Rules" bundle preferences!
+
+- add support for builders other than HTML (e.g. epub etc.)
+
+- add formatting command that fixes any line to the length of the previous line (not just underlines).
+
+- add [source] links to the top of each RST .html file in the Help menu that link to the 
+  corresponding .txt source file.
+ 
+- extend the documentation where it makes sense:
+
+  1. explain the differences between Building and RST Previewing (former uses conf.py 
+     and thus has template and theme support, latter uses docutils directly in code 
+     with the default Sphinx doc theme amongst other things.) √
+  2. Explain the role of values fetched from conf.py in all concerned commands.
+  3. Keep shell variables up-to-date
+  4. Explain the motives behind the complex dependency/requirement toolchain resolving 
+     found in init.sh by giving a brief insight into the problems and their solutions.
+
+* as part of requirements met robustness testing, create as many bust situations as possible
+
+  1. for shell variables leave some out, let some point to a non existing path, etc.
+  2. play around with different variable states
+
+- if neccessary, port the SphinxDoc module from sphinxdoc.rb over to the Python side in sphinxdoc.py.
+
+
+√ modify the error parser output to include, at the end, (in slategray or some other 
+  less noticable color) the filename the line refers to.
+
+√ add option TM_SPHINX_DOC_AUTOMAKE_SILENT for running automake on save but not show 
+  the HTML output window
+
+√ implement the "Open Built HTML Counterpart" command
+
+√ implement the "Run Sphinx Quickstart" command
+
+√ add a preference shell variable that lets the user select if she sees all issues on automake 
+  or just the ones linked to the file that was saved at this very moment.
+
+√ make Quick Open work with arbitrary file extension based on source_suffix setting in conf.py
+
+√ get rid of error duplicates in filtered-per-file output. 
+  note: this may prove harder than can be inferred by reasoning because of the many ways 
+  an error message can be structured and thus the need to fall back to different regexes. 
+  
+  if it proves too unreliable, leave the duplicates in. 

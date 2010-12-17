@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+. "$TM_BUNDLE_SUPPORT/init.sh"
+. "$TM_BUNDLE_SUPPORT/sphinx_build.sh"
+
+DEBUG=0
+
+html_header "Build and Preview" "Sphinx Doc"
+
+if [[ "$DEBUG" = 1 ]]; then    
+    	basepath="/Users/andre/Documents/Aptana Studio 2.0/Workspaces/Python/File Sequence Checker/doc/sphinx"
+    	builddir="_build"
+    	target=`python "/Users/andre/Library/Application Support/TextMate/Bundles/Sphinx Doc.tmbundle/Support/get_target.py" "$basepath" "$current_file"`
+    	echo "target = $target"
+else
+    	basepath="$current_dir"
+    	builddir="$build_dir"
+	target=`"$python" "${TM_BUNDLE_SUPPORT}/get_target.py" "$basepath" "$current_file"`
+fi
+
+if [[ $? = 3 ]]; then
+	. "$TM_BUNDLE_SUPPORT/sphinxdoc.sh"
+	errmsg=`prepend_error_label "Your Python installation seems to 'think' that your Sphinx config file (&lt;code&gt;conf.py&lt;/code&gt;) contains &lt;code&gt;SyntaxErrors&lt;/code&gt;. If you have multiple Python installations active, make sure the correct one is utilized.&lt;br&gt;&lt;br&gt;See bundle help (alt+F1) for more info."`
+	echo -e `entitify_keyboard_shortcuts "$errmsg"`
+else
+	if [[ ! -n "$target" ]]; then
+		echo "Previewing the target file '$target' failed!"
+	else
+		output=`run_sphinx_build "redirect_stderr"`
+
+		if [[ $? = 0 ]]; then
+
+			# show the sphinx-build output in a HTML preview window...
+
+			IFS=$'\n'
+			for line in $output; do
+				echo "$line&lt;br/&gt;"
+		    	done
+		
+			# ...before switching to the built HTML file
+		    	echo "&lt;meta http-equiv=\"refresh\" content=\"1; tm-file://$target\"&gt;"
+		else
+	    		echo "'sphinx-build "$basepath"' failed!"
+		fi
+	fi
+fi
+
+html_footer</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@r</string>
+	<key>name</key>
+	<string>Build and Preview</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.sphinx.doc</string>
+	<key>uuid</key>
+	<string>A8146C5D-EB98-4AB3-BD72-4E8C4143D5CC</string>
+</dict>
+</plist>

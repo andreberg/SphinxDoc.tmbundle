@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+. "$TM_BUNDLE_SUPPORT/init.sh"
+. "$TM_BUNDLE_SUPPORT/sphinx_build.sh"
+
+mode="html"
+ext="$mode"
+
+DEBUG=0
+
+if [[ "$DEBUG" = 1 ]]; then    
+    	basepath="/Users/andre/Documents/Aptana Studio 2.0/Workspaces/Python/File Sequence Checker/doc/sphinx"
+    	builddir="_build"
+    	target=`python "/Users/andre/Library/Application Support/TextMate/Bundles/Sphinx Doc.tmbundle/Support/get_target.py" "$basepath" "$fullname"`
+    	echo "target = $target"
+else
+    	basepath="$current_dir"
+    	builddir="$build_dir"
+	target=`"$python" "${TM_BUNDLE_SUPPORT}/get_target.py" "$basepath" "$current_file"`
+fi
+
+html_header "Build and Open in Browser" "Sphinx Doc"
+
+output=`run_sphinx_build "redirect_stderr"`
+
+# output sphinx-build status messages to HTML preview window
+
+IFS=$'\n'
+for line in $output; do
+  echo "$line&lt;br/&gt;"
+done 
+
+html_footer
+
+# open in browser
+open "$target"
+
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@r</string>
+	<key>name</key>
+	<string>Build and Open in Browser</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.sphinx.doc</string>
+	<key>uuid</key>
+	<string>6F5D834C-4B81-4C73-B4CE-5B67A2966E8D</string>
+</dict>
+</plist>

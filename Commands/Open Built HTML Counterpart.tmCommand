@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>. "$TM_BUNDLE_SUPPORT/init.sh"
+
+"$python" "$TM_BUNDLE_SUPPORT/open_counterpart.py" "$TM_FILEPATH"</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@O</string>
+	<key>name</key>
+	<string>Open Counterpart</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>scope</key>
+	<string>text.restructuredtext,source.sphinx.doc,text.html</string>
+	<key>uuid</key>
+	<string>F56512EB-22AE-4730-8EE9-F1BF472D2204</string>
+</dict>
+</plist>

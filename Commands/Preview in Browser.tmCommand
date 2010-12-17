@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>. "$TM_BUNDLE_SUPPORT/init.sh"
+. "$TM_BUNDLE_SUPPORT/sphinxdoc.sh"
+. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+
+if [[ -s "$TM_SPHINX_DOCUTILS_DIR/rst2html.py" ]]; then
+	TRST="$TM_SPHINX_DOCUTILS_DIR/rst2html.py"
+else
+	TRST=${TM_RST2HTML:=rst2html.py}
+	require_cmd "$TRST" "You can either set the &lt;tt&gt;TM_SPHINX_DOCUTILS_DIR&lt;/tt&gt; variable to the &lt;tt&gt;bin&lt;/tt&gt; path of your docutils (docutils.sourceforge.net) installation (e.g. &lt;tt&gt;/Library/Frameworks/Python.framework/Versions/Current/bin&lt;/tt&gt; or set the &lt;tt&gt;PATH&lt;/tt&gt; variable to include the path of the docutils converters. Alternatively, for fine-grained control, you can set the &lt;tt&gt;TM_RST2HTML&lt;/tt&gt; variable to the full path of the &lt;tt&gt;rst2html.py&lt;/tt&gt; file."
+fi
+
+if [[ -f "$TM_DIRECTORY/default.css" ]]
+	then stylesheet="$TM_DIRECTORY/default.css"
+elif [[ -f "$TM_PROJECT_DIRECTORY/default.css" ]]
+	then stylesheet="$TM_PROJECT_DIRECTORY/default.css"
+else
+	css=`mktemp -t /tmp`
+	echo 'body {	
+		background-color: #eee;
+	}
+	.document {
+		background: white;
+		font-family: Georgia, serif;
+		font-size: 13px;
+		border: 1px #888 solid;
+		padding: 0 1em;
+	}' &gt; $css
+	stylesheet=$css
+fi
+
+if [[ -n $stylesheet ]]
+	then flags="--embed-stylesheet --stylesheet=$stylesheet"
+	else flags=""
+fi
+
+out=`mktemp -t /tmp`
+
+#echo "Running: $TRST $flags \"$TM_FILEPATH\" \"$out.html\""
+#"$TRST" $flags "$TM_FILEPATH" "$out.html"
+
+"$TRST" "$current_file" 1&gt; /dev/null 2&gt; "$errors_tmp_file"
+"$TRST" --quiet $flags "$current_file" "$out.html"
+
+if [[ -s "$errors_tmp_file" ]]; then
+
+	html_header "Preview as RST in Browser" "Sphinx Doc"
+
+	#echo "&lt;p&gt;"
+	#"$ruby" "$TM_BUNDLE_SUPPORT/error_parser.rb" "$errors_tmp_file" "$current_file" "docutils"
+	#echo "&lt;/p&gt;"
+	
+	present_errors "docutils"
+
+	html_footer
+	
+	open "$out.html"
+
+	
+	if [[ -n $css ]]
+		then rm $css
+	fi
+
+	exit_show_html
+else
+	open "$out.html"
+fi
+
+if [[ -n $css ]]
+	then rm $css
+fi
+
+
+
+
+
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@p</string>
+	<key>name</key>
+	<string>Preview File as RST in Browser</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>text.restructuredtext, source.sphinx.doc</string>
+	<key>uuid</key>
+	<string>8B52EA0A-9B13-446F-A332-F502C9F8A89E</string>
+</dict>
+</plist>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>captureFormatString</key>
+	<string>Line: $2 Error: "$3"</string>
+	<key>capturePattern</key>
+	<string>^(.+):(\d+): (.+)</string>
+	<key>command</key>
+	<string>. "$TM_BUNDLE_SUPPORT/validate_syntax.sh"
+</string>
+	<key>fileCaptureRegister</key>
+	<string>1</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^V</string>
+	<key>lineCaptureRegister</key>
+	<string>2</string>
+	<key>name</key>
+	<string>Validate Syntax</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>text.restructuredtext, source.sphinx, source.python</string>
+	<key>uuid</key>
+	<string>0AFFB46C-0B80-4B50-81C5-CCEA5745D90B</string>
+</dict>
+</plist>
