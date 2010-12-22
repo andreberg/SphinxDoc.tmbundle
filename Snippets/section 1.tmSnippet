@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>content</key>
@@ -9,10 +9,10 @@ $0</string>
 	<key>name</key>
 	<string>section 1</string>
 	<key>scope</key>
-	<string>text.restructuredtext</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>tabTrigger</key>
-	<string>sec</string>
+	<string>s</string>
 	<key>uuid</key>
-	<string>7B6D031A-FF9A-475A-8FD4-F8C099F96313</string>
+	<string>2DC21FB1-A62D-4B29-A965-0EE84F7E17E7</string>
 </dict>
 </plist>

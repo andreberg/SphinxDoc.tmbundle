@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
@@ -27,14 +27,14 @@ end</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>@k</string>
+	<string>^k</string>
 	<key>name</key>
 	<string>Typewriter</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>text.restructuredtext</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
-	<string>4C8AB52A-5C88-4786-9FCE-28777DBB02B5</string>
+	<string>1337E50E-3702-4448-9120-2CFC7F9452BB</string>
 </dict>
 </plist>

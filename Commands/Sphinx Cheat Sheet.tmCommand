@@ -23,7 +23,7 @@ html_footer
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>source.sphinx.doc, text.restructuredtext</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
 	<string>EC42CC9F-16D9-40C0-8097-F81F66E451E8</string>
 </dict>

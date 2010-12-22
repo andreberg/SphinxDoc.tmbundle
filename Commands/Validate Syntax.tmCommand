@@ -24,7 +24,7 @@
 	<key>output</key>
 	<string>discard</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx, source.python</string>
+	<string>text.restructuredtext.sphinx.doc, source.python</string>
 	<key>uuid</key>
 	<string>0AFFB46C-0B80-4B50-81C5-CCEA5745D90B</string>
 </dict>

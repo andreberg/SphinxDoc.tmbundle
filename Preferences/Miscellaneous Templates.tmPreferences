@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Miscellaneous</string>
+	<string>Miscellaneous: Templates</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc - text.html.template.sphinx</string>
+	<string>text.restructuredtext.sphinx.doc.embedded.html</string>
 	<key>settings</key>
 	<dict>
 		<key>shellVariables</key>
@@ -14,17 +14,17 @@
 				<key>name</key>
 				<string>TM_COMMENT_START</string>
 				<key>value</key>
-				<string>.. </string>
+				<string>{# </string>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>TM_TAB_SIZE</string>
+				<string>TM_COMMENT_END</string>
 				<key>value</key>
-				<string>3</string>
+				<string> #}</string>
 			</dict>
 		</array>
 	</dict>
 	<key>uuid</key>
-	<string>3AC1EC00-1429-4D83-8D8E-D431B2F2345B</string>
+	<string>537BCC52-C2B2-498F-BBE5-045C39541D35</string>
 </dict>
 </plist>

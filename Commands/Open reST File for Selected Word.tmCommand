@@ -17,7 +17,7 @@
 	<key>output</key>
 	<string>showAsTooltip</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
 	<string>B6BD49FC-078E-4643-A1BD-49D962D74C15</string>
 </dict>

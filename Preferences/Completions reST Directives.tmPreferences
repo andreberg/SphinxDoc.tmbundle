@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Completions: reST Directives</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx.doc</string>
+	<string>disabled_please_dont_change_this_scope</string>
 	<key>settings</key>
 	<dict>
 		<key>completions</key>

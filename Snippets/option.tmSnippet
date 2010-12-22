@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>:${1:option}:</string>
+	<string>:${1:option}: $2</string>
 	<key>name</key>
 	<string>option</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>tabTrigger</key>
 	<string>:</string>
 	<key>uuid</key>

@@ -19,7 +19,7 @@ preview_selected_text "sphinx"</string>
 	<key>output</key>
 	<string>discard</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc, source.sphinx.conf</string>
 	<key>uuid</key>
 	<string>A894D867-1785-490E-B69B-967298096B88</string>
 </dict>

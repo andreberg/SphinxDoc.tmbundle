@@ -12,7 +12,7 @@
 
 html_header "Build and Refresh Browser" "Sphinx Doc"
 
-output=`sphinx_build redirect_stderr`
+output=`run_sphinx_build redirect_stderr`
 
 IFS=$'\n'
 for line in $output; do
@@ -31,7 +31,7 @@ browser_refresh</string>
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc, source.sphinx.conf</string>
 	<key>uuid</key>
 	<string>AE6CC8CE-B630-4D76-928F-CA1FEC8297B4</string>
 </dict>

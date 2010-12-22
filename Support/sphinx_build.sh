@@ -14,6 +14,8 @@
 . "$TM_BUNDLE_SUPPORT/init.sh"
 
 function run_sphinx_build() {
+    # $1: redirect_stdout|redirect_stderr|mute_stdout_redirect_stderr|mute_stderr_redirect_stdout|mute_stdout_and_stderr|pre
+    # $2: which builder to use (default: html)
     
     # the check here should be superfluous since we source init.sh
     # at the beginning where it should have already happened.
@@ -21,7 +23,13 @@ function run_sphinx_build() {
 
     source_dir="$current_dir"
     target_dir="$source_dir/$build_dir"
-
+    
+    if [[ -n "$2" ]]; then
+        builder="${2}"
+    else
+        builder="html"
+    fi
+    
     # remove residue
     if [[ -d "$target_dir" ]]; then
         rm -rf "$target_dir"
@@ -37,16 +45,19 @@ function run_sphinx_build() {
     fi
     
     if [[ "${1}" = "redirect_stdout" ]]; then
-        "$sphinx_build" "$source_dir" "$build_dir" 1> "$output_tmp_file" | pre
+        "$sphinx_build" -b "$builder" "$source_dir" "$build_dir" 1> "$output_tmp_file" | pre
     elif [[ "${1}" = "redirect_stderr" ]]; then
-        "$sphinx_build" "$source_dir" "$build_dir" 2> "$errors_tmp_file" | pre
+        "$sphinx_build" -b "$builder" "$source_dir" "$build_dir" 2> "$errors_tmp_file" | pre
     elif [[ "${1}" = "mute_stdout_redirect_stderr" ]]; then
-        "$sphinx_build" "$source_dir" "$build_dir" > /dev/null 2> "$errors_tmp_file"
+        "$sphinx_build" -b "$builder" "$source_dir" "$build_dir" > /dev/null 2> "$errors_tmp_file"
     elif [[ "${1}" = "mute_stderr_redirect_stdout" ]]; then
-        "$sphinx_build" "$source_dir" "$build_dir" > "$output_tmp_file" 2> /dev/null
+        "$sphinx_build" -b "$builder" "$source_dir" "$build_dir" > "$output_tmp_file" 2> /dev/null
     elif [[ "${1}" = "mute_stdout_and_stderr" ]]; then
-        "$sphinx_build" "$source_dir" "$build_dir" &> /dev/null
+        "$sphinx_build" -b "$builder" "$source_dir" "$build_dir" &> /dev/null
+    elif [[ "${1}" = "pre" ]]; then
+        "$sphinx_build" -b "$builder" "$source_dir" "$build_dir" | pre
     else
-        "$sphinx_build" "$source_dir" "$build_dir" | pre
+        echo "Error: run_sphinx_build() must be called with at least one argument!"
+        echo "See $TM_BUNDLE_SUPPORT/sphinx_build.sh for infos"
     fi
 }

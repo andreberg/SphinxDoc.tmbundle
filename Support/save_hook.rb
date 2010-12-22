@@ -49,7 +49,7 @@ title = "Auto Make on Save"
 ok_msg = "Auto Make OK - No Issues"
 
 if RUBY_VERSION == /1\.9/ then
-  Open3.popen3('source "$TM_BUNDLE_SUPPORT/sphinx_build.sh"; run_sphinx_build') do |stdin, stdout, stderr, wait_thr|
+  Open3.popen3('source "$TM_BUNDLE_SUPPORT/sphinx_build.sh"; run_sphinx_build "pre"') do |stdin, stdout, stderr, wait_thr|
     while line = stdout.gets
       output += line
     end
@@ -59,7 +59,7 @@ if RUBY_VERSION == /1\.9/ then
     exit_status = wait_thr.value
   end
 else
-  stdin, stdout, stderr = Open3.popen3('source "$TM_BUNDLE_SUPPORT/sphinx_build.sh"; run_sphinx_build')
+  stdin, stdout, stderr = Open3.popen3('source "$TM_BUNDLE_SUPPORT/sphinx_build.sh"; run_sphinx_build "pre"')
   while line = stdout.gets
     output += line
   end
@@ -102,10 +102,7 @@ else
     
     
     errors_tmp_file = ENV['TM_SPHINX_DOC_ERRORS_TMP_FILE']
-    
-    #TextMate.exit_show_tool_tip("errors_tmp_file = #{errors_tmp_file}")
-    #TextMate.exit_show_tool_tip("TM_SPHINX_DOC_AUTOMAKE_GLOBAL_REPORT = #{!ENV['TM_SPHINX_DOC_AUTOMAKE_GLOBAL_REPORT'].nil?}")
-    
+        
     # if File.exists? errors_tmp_file then
     #   File.delete errors_tmp_file
     # end

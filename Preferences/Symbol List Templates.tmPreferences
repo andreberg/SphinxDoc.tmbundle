@@ -3,15 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Spell Checking</string>
+	<string>Symbol List: Templates</string>
 	<key>scope</key>
-	<string>meta.paragraph.sphinx.doc - meta.other.directive.sphinx.doc</string>
+	<string>entity.block.template.sphinx.doc</string>
 	<key>settings</key>
 	<dict>
-		<key>spellChecking</key>
-		<integer>1</integer>
+		<key>showInSymbolList</key>
+		<string>1</string>
+		<key>symbolTransformation</key>
+		<string></string>
 	</dict>
 	<key>uuid</key>
-	<string>6E114DE0-8B6F-4A74-A24F-B41F7E894DFE</string>
+	<string>020BE352-75CC-461C-B9CE-CC9080E7469A</string>
 </dict>
 </plist>

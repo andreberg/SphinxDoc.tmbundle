@@ -9,12 +9,42 @@
     Updated: 2010-12-17
     
     Legend: "-" => "feature topics"
-            "*" => "ongoing, tips, recommendations"
+            "+" => "bonus feature topics (not required in a strict sense)"
+            "*" => "tips, recommendations, ongoing"
             "√" => "done"
+            "#" => "canceled"
 
 
-- Finish the Language Grammar. Especially the down-belon region!
+- Finish the Language Grammar.
 
+- Add fallback to Show as HTML preview type commands to look for file in outdir/<builder> if not found in outdir 
+
+√ Add meat to the Symbol List
+
+- Add theme support for any indented text after a :: as last construct on the last line.
+
+- Better error propagation when building and underlying code runs into exceptions. 
+
+  Following the sampledoc tutorial I encountered two cases where the only ouput was 
+  "Using Sphinx 1.0.5" but then nothing else. 
+  
+  Using "make html" on the command line revealed that errors where propagated by Python 
+  exceptions from inside some custom extensions. 
+
+  Need to find a way to make these errors visible to the user.
+
+- Proper support for word completions.
+  This is a biggie: we need to extend the current Completion for Word... command and 
+  make it distinguish between different scopes, such as after a .. or inbetween a :<xyz>:
+  etc. Of course this implies to familiarise myself better with the Sphinx spec.
+  Helpful links for this include:
+  
+   - http://sphinx.pocoo.org/markup
+   - http://sphinx.pocoo.org/markup/inline.html
+
+- Add glob capabilities for proper "exclude_patterns" conf.py support.
+  See http://sphinx.pocoo.org/config.html#confval-exclude_patterns for more info.
+  
 - Add support for "Indentation Rules" bundle preferences!
 
 - add support for builders other than HTML (e.g. epub etc.)
@@ -23,7 +53,7 @@
 
 - add [source] links to the top of each RST .html file in the Help menu that link to the 
   corresponding .txt source file.
- 
+
 - extend the documentation where it makes sense:
 
   1. explain the differences between Building and RST Previewing (former uses conf.py 
@@ -32,15 +62,14 @@
   2. Explain the role of values fetched from conf.py in all concerned commands.
   3. Keep shell variables up-to-date
   4. Explain the motives behind the complex dependency/requirement toolchain resolving 
-     found in init.sh by giving a brief insight into the problems and their solutions.
+     found in init.sh by giving a brief insight into the problems and their solutions. √ 
 
 * as part of requirements met robustness testing, create as many bust situations as possible
 
   1. for shell variables leave some out, let some point to a non existing path, etc.
   2. play around with different variable states
 
-- if neccessary, port the SphinxDoc module from sphinxdoc.rb over to the Python side in sphinxdoc.py.
-
++ if neccessary, port the SphinxDoc module from sphinxdoc.rb over to the Python side in sphinxdoc.py.
 
 √ modify the error parser output to include, at the end, (in slategray or some other 
   less noticable color) the filename the line refers to.
@@ -62,3 +91,5 @@
   an error message can be structured and thus the need to fall back to different regexes. 
   
   if it proves too unreliable, leave the duplicates in. 
+
+# Support newline break in rst link `... <http://...>` (Not possible in current TextMate implementation)

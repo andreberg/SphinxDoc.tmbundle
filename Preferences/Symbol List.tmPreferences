@@ -5,15 +5,17 @@
 	<key>name</key>
 	<string>Symbol List</string>
 	<key>scope</key>
-	<string>meta.directive.sphinx, meta.directive.restructuredtext</string>
+	<string>entity.directive.sphinx.doc, meta.link.reference.def.sphinx.doc, meta.doctitle.sphinx.doc</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<string>1</string>
 		<key>symbolTransformation</key>
 		<string>
-      	s/^\.\. (.*)::\s*?(.*)$/$1: $2/g;
-		s/: $//g;
+		s/^ \b//g;
+      	s/^\.\. (.*)::\s*?(.*)$/    $1/g;
+		
+		s/\.\. _(.*?):/$1/g;
 	</string>
 	</dict>
 	<key>uuid</key>

@@ -5,26 +5,22 @@
 	<key>commands</key>
 	<array>
 		<dict>
-			<key>command</key>
-			<string>moveToEndOfLine:</string>
-		</dict>
-		<dict>
 			<key>argument</key>
 			<dict>
 				<key>action</key>
-				<string>findNext</string>
+				<string>findPrevious</string>
 				<key>findInProjectIgnoreCase</key>
 				<false/>
-				<key>findString</key>
-				<string>^(=|-|_|\*|#|~|\+|'|"|\^|`){3,}$</string>
-				<key>ignoreCase</key>
+				<key>findInProjectRegularExpression</key>
 				<false/>
+				<key>findString</key>
+				<string>(?=^$)(?:\n|\r|\r\n)(.+?)(?:\n|\r|\r\n)((?:=|-|_|\*|#|~|\+|'|"|\^|`){3,})(?!(?:(?:\n|\r|\r\n)(?:.+)(?:\n|\r|\r\n)))</string>
+				<key>ignoreCase</key>
+				<true/>
 				<key>regularExpression</key>
 				<true/>
 				<key>replaceAllScope</key>
 				<string>document</string>
-				<key>replaceString</key>
-				<string></string>
 				<key>wrapAround</key>
 				<true/>
 			</dict>
@@ -33,12 +29,12 @@
 		</dict>
 	</array>
 	<key>keyEquivalent</key>
-	<string>@</string>
+	<string>@</string>
 	<key>name</key>
-	<string>Goto Next Section</string>
+	<string>Goto Prev Heading</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
-	<string>88BC8B88-E5BC-48C4-AE96-40AEB58D3214</string>
+	<string>982CCE2F-70A1-403B-A511-6D8C170E5173</string>
 </dict>
 </plist>

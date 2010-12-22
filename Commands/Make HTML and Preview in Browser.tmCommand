@@ -51,7 +51,7 @@ open "$target"
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc, source.sphinx.conf</string>
 	<key>uuid</key>
 	<string>6F5D834C-4B81-4C73-B4CE-5B67A2966E8D</string>
 </dict>

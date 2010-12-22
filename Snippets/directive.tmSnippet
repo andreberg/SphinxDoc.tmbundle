@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>.. ${1:directive}::
+	<string>.. ${1:directive}:: $2
    $0</string>
 	<key>name</key>
 	<string>directive</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>tabTrigger</key>
 	<string>..</string>
 	<key>uuid</key>

@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Completions: Sphinx Options</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>disabled_please_dont_change_this_scope</string>
 	<key>settings</key>
 	<dict>
 		<key>completions</key>

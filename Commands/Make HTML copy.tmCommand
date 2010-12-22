@@ -23,7 +23,7 @@ fi</string>
 	<key>output</key>
 	<string>discard</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
 	<string>E98957A1-EEA9-4C5F-A22C-C61A74599A6B</string>
 </dict>

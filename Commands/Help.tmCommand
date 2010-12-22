@@ -7,7 +7,7 @@
 	<key>command</key>
 	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
 html_header "Sphinx Doc Bundle Help" "Sphinx"
-"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/../README.markdown"
+"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_PATH/README.markdown"
 html_footer
 </string>
 	<key>input</key>
@@ -19,7 +19,7 @@ html_footer
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
 	<string>7510D00E-B830-4384-B9D0-4F2C3D55A02C</string>
 </dict>

@@ -5,20 +5,25 @@
 	<key>name</key>
 	<string>Completions: Sphinx Directives</string>
 	<key>scope</key>
-	<string>source.sphinx.doc</string>
+	<string>disabled_please_dont_change_this_scope</string>
 	<key>settings</key>
 	<dict>
-		<key>completions</key>
-		<array>
-			<string>toctree</string>
-			<string>module</string>
-			<string>moduleauthor</string>
-			<string>sectionauthor</string>
-			<string>class</string>
-			<string>function</string>
-			<string>func</string>
-			<string>ref</string>
-		</array>
+		<key>completionCommand</key>
+		<string>ruby &lt;&lt;-'RUBY'
+COMPLETIONS = ["toctree", "module", "moduleauthor", "sectionauthor", "class", "function", "func", "ref"]
+cw = ENV["TM_CURRENT_WORD"]
+if cw
+  results = []
+  COMPLETIONS.each do |c|
+    if c =~ Regexp.new(cw)
+      results.push c
+    end
+  end
+  puts results.sort.uniq.join("\n")
+end
+RUBY</string>
+		<key>disableDefaultCompletion</key>
+		<integer>1</integer>
 	</dict>
 	<key>uuid</key>
 	<string>B11CC30D-E195-418C-B01D-06C5559767D5</string>

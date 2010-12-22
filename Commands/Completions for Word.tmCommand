@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+require ENV['TM_SUPPORT_PATH'] + '/lib/osx/plist'
+require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
+
+#choices = OSX::PropertyList.load(File.read(ENV['TM_BUNDLE_SUPPORT'] + '/completions.plist'))
+#TextMate::UI.complete(choices, :initial_filter =&gt; ENV['TM_CURRENT_WORD'], :extra_chars =&gt; ':')
+
+sphinx_directives = [
+  'toctree', 'module', 'moduleauthor', 'sectionauthor', 'class', 'function', 'func'
+]
+
+sphinx_directives_cross_ref = [
+  'ref', 'doc', 'download', 'envvar', 'token', 'keyword', 'option', 'term', 'abbr', 'command', 'dfn', 'file', 'guilabel', 'kbd', 'mailheader', 'makevar', 'manpage', 'menuselection', 'mimetype', 'newsgroup', 'program', 'regexp', 'samp', 'pep', 'rfc'
+]
+
+sphinx_substitutions_default = [
+  'release', 'version', 'today'
+]
+
+sphinx_options = [
+  'synopsis', 'height', 'width', 'scale', 'alt', 'align'
+]
+
+rest_elements = [
+  'abbreviation', 'acronym', 'address', 'admonition', 'attention', 'attribution', 'author', 'authors', 'block_quote', 'bullet_list', 'caption', 'caution', 'citation', 'citation_reference', 'classifier', 'colspec', 'comment', 'compound', 'contact', 'container', 'copyright', 'danger', 'date', 'decoration', 'definition', 'definition_list', 'definition_list_item', 'description', 'docinfo', 'doctest_block', 'document', 'emphasis', 'entry', 'enumerated_list', 'error', 'field', 'field_body', 'field_list', 'field_name', 'figure', 'footer', 'footnote', 'footnote_reference', 'generated', 'header', 'hint', 'image', 'important', 'inline', 'label', 'legend', 'line', 'line_block', 'list_item', 'literal', 'literal_block', 'note', 'option', 'option_argument', 'option_group', 'option_list', 'option_list_item', 'option_string', 'organization', 'paragraph', 'pending', 'problematic', 'raw', 'reference', 'revision', 'row', 'rubric', 'section', 'sidebar', 'status', 'strong', 'subscript', 'substitution_definition', 'substitution_reference', 'subtitle', 'superscript', 'system_message', 'table', 'target', 'tbody', 'term', 'tgroup', 'thead', 'tip', 'title', 'title_reference', 'topic', 'transition', 'version', 'warning'
+]
+
+rest_directives = [
+  'attention', 'caution', 'danger', 'error', 'hint', 'important', 'note', 'tip', 'warning', 'admonition', 'image', 'figure', 'topic', 'sidebar', 'parsed-literal', 'rubric', 'epigraph', 'highlights', 'pull-quote', 'compound', 'container', 'table', 'list-table', 'csv-table', 'contents', 'sectnum', 'header', 'footer', 'target-notes', 'meta', 'include', 'raw', 'replace', 'unicode', 'date', 'class', 'role', 'default-role', 'title'
+]
+
+COMPLETIONS = (sphinx_directives + sphinx_directives_cross_ref + sphinx_substitutions_default + sphinx_options + rest_directives + rest_elements).sort.uniq
+
+selection = COMPLETIONS.select { |e| e =~ Regexp.new("^#{ENV['TM_CURRENT_WORD']}") }
+
+if selection.length == 1
+  selected = selection.first
+elsif selection.length &gt; 1
+  selected = selection[TextMate::UI.menu(selection)] rescue exit
+else
+  TextMate.exit_show_tool_tip "No matches found."
+end
+
+print selected.sub(/\A#{Regexp.escape(ENV['TM_CURRENT_WORD'].to_s)}/, "")</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>document</string>
+	<key>keyEquivalent</key>
+	<string>~</string>
+	<key>name</key>
+	<string>Completions for Word...</string>
+	<key>output</key>
+	<string>afterSelectedText</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc</string>
+	<key>uuid</key>
+	<string>57AEE257-D794-43FF-A39C-4BE0E5F2D002</string>
+</dict>
+</plist>

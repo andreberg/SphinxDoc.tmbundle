@@ -23,7 +23,7 @@ current_dir="${TM_PROJECT_DIRECTORY:-$TM_DIRECTORY}"
 current_file="${TM_FILEPATH:-untitled}"
 current_text="${TM_SELECTED_TEXT:-${TM_CURRENT_LINE:-${TM_CURRENT_WORD:-Nothing selected}}}"
 
-build_dir="${TM_SPHINX_BUILD_DIR:-_build}"
+build_dir="${TM_SPHINX_BUILD_DIR:-${current_dir}/_build}"
 project_name=`basename "$current_dir"`
 
 rst2html="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2html.py"
@@ -54,8 +54,6 @@ else
     fi 
 fi
 
-unset spqsdir
-
 sphinx_conf="${TM_SPHINX_CONF_DIR:.}"
 
 preferred_browser="${TM_PREFERRED_BROWSER:-Safari}"
@@ -78,9 +76,9 @@ ruby="$ruby_"
 # is used for a label by means of setting
 # the TM_SPHINX_DOC_COLOR... shell vars.
 color_infos="dodgerblue"
-color_files="#555"
 color_warnings="orange"
 color_errors="red"
+color_files="#555"
 
 # -----------------------------------------------------------------
 #                      Initial Functions 
@@ -158,6 +156,42 @@ function entitify_keyboard_shortcuts() {
     sed -E 's/(shift|Shift)\+/\&#x21E7;/g'
 }
 
+# a modified version of TextMate's default require_cmd
+# which can be found at $TM_SUPPORT_PATH/bash_init.sh
+# It runs $1 through basename if $1 appears to be a path
+# instead of a executable name, adds the dirname of this
+# path to PATH so it can be presented, and also removes 
+# duplicate entries from the PATH presented to the user.
+#
+# The original info about require_cmd is reprinted 
+# here:
+#
+# "this will check for the presence of a command and
+# prints an (HTML) error + exists if it's not there""
+function requires () {
+    if [[ "$1" =~ "/" ]]; then
+        cmddirname=`dirname "$1"`
+        cmdbasename=`basename "$1"`
+        PATH="$cmddirname:${PATH}"
+    else
+        cmddirname=""
+        cmdbasename="$1"
+    fi
+    if ! type -p "$1" >/dev/null; then
+	    cat <<HTML
+<h3 class="error">Couldn't find $cmdbasename</h3>
+${2:+<p>$2</p>}
+<p>Locations searched:</p>
+<p><pre>
+`echo "${PATH//:/
+}" | uniq`
+</pre></p>
+HTML
+	    exit_show_html;
+    fi
+}
+
+
 # --------------------------------------------------------------
 #                      Error Messages 
 # --------------------------------------------------------------
@@ -182,13 +216,13 @@ setting a <code>TM_PYTHON</code> variable.
 EOF
 `
 
-err_python_not_found_msg="To tell TextMate where to find a valid Python installation, go to <code>Preferences &gt; Advanced &gt; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of your Python installation or point to the <code>python</code> executable directly by setting a <code>TM_PYTHON</code> variable.<br><br>${err_help_hint}"
+err_python_not_found_msg="To tell TextMate where to find a valid Python installation, go to <code>Preferences &rarr; Advanced &rarr; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of your Python installation or point to the <code>python</code> executable directly by setting a <code>TM_PYTHON</code> variable.<br><br>${err_help_hint}"
 
-err_ruby_not_found_msg="To tell TextMate where to find a valid Ruby installation, go to <code>Preferences &gt; Advanced &gt; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of your Ruby installation or point to the <code>ruby</code> executable directly by setting a <code>TM_RUBY</code> variable.<br><br> ${err_help_hint}"
+err_ruby_not_found_msg="To tell TextMate where to find a valid Ruby installation, go to <code>Preferences → Advanced &rarr; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of your Ruby installation or point to the <code>ruby</code> executable directly by setting a <code>TM_RUBY</code> variable.<br><br> ${err_help_hint}"
 
-err_sphinx_not_found_msg="To tell TextMate where to find a valid Sphinx installation, go to <code>Preferences &gt; Advanced &gt; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of the correct Python installation (the correct one being the one that has the <code>Sphinx</code> executables) or point to the <code>sphinx-build</code> executable directly by setting a <code>TM_SPHINX_BUILD</code> variable.<br><br>Note: if <code>TM_SPHINX_DOCUTILS_DIR</code> is set the directory it points to will also be searched for <code>sphinx-build</code>.<br><br>${err_help_hint}"
+err_sphinx_not_found_msg="To tell TextMate where to find a valid Sphinx installation, go to <code>Preferences &rarr; Advanced &rarr; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of the correct Python installation (the correct one being the one that has the <code>Sphinx</code> executables) or point to the <code>sphinx-build</code> executable directly by setting a <code>TM_SPHINX_BUILD</code> variable.<br><br>Note: if <code>TM_SPHINX_DOCUTILS_DIR</code> is set the directory it points to will also be searched for <code>sphinx-build</code>.<br><br>${err_help_hint}"
 
-err_docutils_not_found_msg="To tell TextMate where to find valid docutils installation, go to <code>Preferences &gt; Advanced &gt; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of your Python installation (or wherever else you chose to install <code>rst2html.py</code> and friends) or point to the directory containing <code>rst2html.py</code> and friends directly by setting a <code>TM_SPHINX_DOCUTILS_DIR</code> variable. <br><br>${err_help_hint}"
+err_docutils_not_found_msg="To tell TextMate where to find valid docutils installation, go to <code>Preferences &rarr; Advanced &rarr; Shell Variables</code> and either add a <code>PATH</code> setting that includes the <code>bin</code> directory of your Python installation (or wherever else you chose to install <code>rst2html.py</code> and friends) or point to the directory containing <code>rst2html.py</code> and friends directly by setting a <code>TM_SPHINX_DOCUTILS_DIR</code> variable. <br><br>${err_help_hint}"
 
 
 # ------------------------------------------------------------------
@@ -196,7 +230,7 @@ err_docutils_not_found_msg="To tell TextMate where to find valid docutils instal
 # ------------------------------------------------------------------
 
 
-require_cmd "$python" "$err_python_not_found_msg"
+requires "$python" "$err_python_not_found_msg"
 
 if [[ $((`python_version "$python"`)) < 260 ]]; then 
     cat <<-HTML
@@ -214,7 +248,7 @@ HTML
 fi
 
 # the following may seem complex - and it really is. 
-# the situation arises from the many possibilities
+# a situation arises from the many possibilities
 # in combinations between shell variables, python versions
 # and default paths.
 # In principle we try to go from special case (e.g. shell 
@@ -259,17 +293,17 @@ if [[ -n "$pythonbin" ]]; then
     # absolute path of the user's Python bin dir, so
     # try different tool names, and see what is there
     if [[ ! -s "${pythonbin}/sphinx-build" ]]; then
-        require_cmd "$sphinx_build" "$err_sphinx_not_found_msg"
+        requires "$sphinx_build" "$err_sphinx_not_found_msg"
     else
         sphinx_build="$pythonbin/sphinx-build"
     fi
     if [[ ! -s "${pythonbin}/sphinx-quickstart" ]]; then
-        require_cmd "$sphinx_quickstart" "$err_sphinx_not_found_msg"
+        requires "$sphinx_quickstart" "$err_sphinx_not_found_msg"
     else
         sphinx_quickstart="$pythonbin/sphinx-quickstart"
     fi
     if [[ ! -s "${pythonbin}/rst2html.py" ]]; then
-        require_cmd "$rst2html" "$err_docutils_not_found_msg"
+        requires "$rst2html" "$err_docutils_not_found_msg"
     else
         # FIXME: maybe check for all other essential
         # docutils tools (e.g. rst2s5, rst2xml etc.)?
@@ -279,18 +313,18 @@ elif [[ "$python" = "python" ]]; then
     # case 3: nothing defined - let's try to see what 
     # can be found in PATH. 
     if [[ ! -s "`which sphinx-build`" ]]; then
-        require_cmd "$sphinx_build" "$err_sphinx_not_found_msg"
+        requires "$sphinx_build" "$err_sphinx_not_found_msg"
     fi
     if [[ ! -s "`which rst2html.py`" ]]; then
-        require_cmd "$rst2html" "$err_docutils_not_found_msg"
+        requires "$rst2html" "$err_docutils_not_found_msg"
     fi
 else
     # case 4: all is lost? - let's try on more time 
     # in the most general way possible...
-    require_cmd "python" "$err_python_not_found_msg"
+    requires "python" "$err_python_not_found_msg"
 fi
 
-require_cmd "$ruby" "$err_ruby_not_found_msg"
+requires "$ruby" "$err_ruby_not_found_msg"
 
 # ------------------------------------------------------------------------
 #                      Preparation Steps /Hooks 
@@ -300,4 +334,4 @@ require_cmd "$ruby" "$err_ruby_not_found_msg"
 
 # compile all Python files 
 # (only re-compiles if mod dates of the source .py files are different from the corresponding .pyc files)
-"$python" -c "import compileall; compileall.compile_dir(\"${TM_BUNDLE_SUPPORT}\", quiet=True)"
+#"$python" -c "import compileall; compileall.compile_dir(\"${TM_BUNDLE_SUPPORT}\", quiet=True)"

@@ -5,26 +5,24 @@
 	<key>commands</key>
 	<array>
 		<dict>
-			<key>command</key>
-			<string>moveToBeginningOfLine:</string>
-		</dict>
-		<dict>
 			<key>argument</key>
 			<dict>
 				<key>action</key>
 				<string>findPrevious</string>
 				<key>findInProjectIgnoreCase</key>
 				<false/>
-				<key>findString</key>
-				<string>^(=|-|_|\*|#|~|\+|'|"|\^|`){3,}</string>
-				<key>ignoreCase</key>
+				<key>findInProjectRegularExpression</key>
 				<false/>
+				<key>findString</key>
+				<string>^((?:=|-|_|\*|#|~|\+|'|"|\^|`){3,})$(?:\n|\r|\r\n)^(.*)$(?:\n|\r|\r\n)^(\1)</string>
+				<key>ignoreCase</key>
+				<true/>
 				<key>regularExpression</key>
 				<true/>
 				<key>replaceAllScope</key>
 				<string>document</string>
 				<key>replaceString</key>
-				<string></string>
+				<string>&amp;rarr;</string>
 				<key>wrapAround</key>
 				<true/>
 			</dict>
@@ -33,12 +31,12 @@
 		</dict>
 	</array>
 	<key>keyEquivalent</key>
-	<string>@</string>
+	<string>$@</string>
 	<key>name</key>
-	<string>Goto Prev Section</string>
+	<string>Goto Title Heading</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
-	<string>BEF9C729-1255-44C9-A76D-EBC7B4692511</string>
+	<string>1AE077BF-8E4F-4BDA-9419-49D5A792AE4F</string>
 </dict>
 </plist>

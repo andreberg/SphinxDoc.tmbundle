@@ -3,16 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>${1:subsection name}
-${1/(.)|\s/(?1:*:*)/g}
-$0</string>
+	<string>.. raw:: html
+   
+   $0</string>
 	<key>name</key>
-	<string>section 2</string>
+	<string>raw html</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc meta.paragraph.sphinx.doc</string>
 	<key>tabTrigger</key>
-	<string>subs</string>
+	<string>rawh</string>
 	<key>uuid</key>
-	<string>4E56F71E-C24A-40B9-8A1A-71EF0270EDA7</string>
+	<string>BC816707-C464-434F-AB22-726B29911FD5</string>
 </dict>
 </plist>

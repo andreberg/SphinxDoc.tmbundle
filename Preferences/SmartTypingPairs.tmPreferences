@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>SmartTypingPairs</string>
+	<string>Smart Typing Pairs</string>
 	<key>scope</key>
-	<string>text.restructuredtext</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>settings</key>
 	<dict>
 		<key>smartTypingPairs</key>
@@ -34,9 +34,13 @@
 				<string>`</string>
 				<string>`</string>
 			</array>
+			<array>
+				<string>|</string>
+				<string>|</string>
+			</array>
 		</array>
 	</dict>
 	<key>uuid</key>
-	<string>5B8ABA24-D152-4E7C-B973-3D56BE5D4D5F</string>
+	<string>2DDCB190-CC6E-414F-A428-398FC849AB21</string>
 </dict>
 </plist>

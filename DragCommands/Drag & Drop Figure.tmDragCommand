@@ -6,28 +6,36 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>img="$TM_DROPPED_FILE"
-if [[ $TM_MODIFIER_FLAGS = OPTION ]]; then
+
+if [[ $TM_MODIFIER_FLAGS =~ COMMAND ]]; then
+	tagname="figure"
+else
+	tagname="image"
+fi
+
+if [[ $TM_MODIFIER_FLAGS =~ OPTION ]]; then
 
 	base=${img##*/}
 	alt=$(tr &lt;&lt;&lt;${base%.*} '[_-]' ' '|perl -pe 's/(\w+)/\u$1/g')
 
-	echo ".. |\${1:$alt}| figure:: $img"
+	echo ".. |\${1:$alt}| $tagname:: $img"
 
 	sips -g pixelWidth -g pixelHeight "$img" \
 	|awk '/pixelWidth/  { printf("   :width: %d px\n",  $2) }
 	      /pixelHeight/ { printf("   :height: %d px\n", $2) }'
 
-	echo "   :alt: \"\${1}\""
+	echo "   :alt: \${1}"
+
 else
-	echo ".. figure:: $img"
+	echo ".. $tagname:: $img"
 
 	sips -g pixelWidth -g pixelHeight "$img" \
-	|awk '/pixelWidth/  { printf("   :width: \"%d\" px\n",  $2) }
-	      /pixelHeight/ { printf("   :height: \"%d\" px\n", $2) }'
+	|awk '/pixelWidth/  { printf("   :width: %d px\n",  $2) }
+	      /pixelHeight/ { printf("   :height: %d px\n", $2) }'
 
 	base=${img##*/}
 	alt=$(tr &lt;&lt;&lt;${base%.*} '[_-]' ' '|perl -pe 's/(\w+)/\u$1/g')
-	echo "   :alt: \"\${1:$alt}\""
+	echo "   :alt: \${1:$alt}"
 fi</string>
 	<key>draggedFileExtensions</key>
 	<array>
@@ -39,11 +47,11 @@ fi</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Drag &amp; Drop Image as Figure</string>
+	<string>Drag &amp; Drop Image</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>text.restructuredtext, source.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
 	<string>2E4120C1-2C93-4F97-B063-B6226A2342A2</string>
 </dict>
