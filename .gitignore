@@ -38,9 +38,10 @@ xcuserdata/
 *.tmproj
 
 # Aptana stuff
-*.project
-*.pydevproject
+.project
+.pydevproject
 .settings
+.coverage
 
 # Python Stuff
 
@@ -51,3 +52,5 @@ xcuserdata/
 backup/
 *.bak
 unused__*
+profile_stats.txt
+*_profile.txt
