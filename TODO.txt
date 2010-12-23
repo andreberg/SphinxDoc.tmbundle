@@ -32,6 +32,12 @@
   exceptions from inside some custom extensions. 
 
   Need to find a way to make these errors visible to the user.
+  
+  Update: curious, now it seems to properly show the exception as PlotWarning: <error text>
+  which shows the exception coming from a matplotlib sphinxext. Previously it didn't do that
+  but as stated above failed without giving any explanation like it should have.
+  Either my parsing of the errors file failed or, as likely, there where no errors printed to
+  the temporary error file because some part of the sphinxext toolchain failed silently.
 
 - Proper support for word completions.
   This is a biggie: we need to extend the current Completion for Word... command and 
