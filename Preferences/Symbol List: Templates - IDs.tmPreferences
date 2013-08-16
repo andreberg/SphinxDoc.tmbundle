@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List: Templates - IDs</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc.template meta.toc-list.id.html</string>
+	<string>text.restructuredtext.sphinx.template meta.toc-list.id.html</string>
 	<key>settings</key>
 	<dict>
 		<key>symbolTransformation</key>

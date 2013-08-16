@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>ref</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>tabTrigger</key>
 	<string>::</string>
 	<key>uuid</key>

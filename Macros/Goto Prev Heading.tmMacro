@@ -33,7 +33,7 @@
 	<key>name</key>
 	<string>Goto Prev Heading</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>982CCE2F-70A1-403B-A511-6D8C170E5173</string>
 </dict>

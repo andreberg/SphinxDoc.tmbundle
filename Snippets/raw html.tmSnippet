@@ -9,7 +9,7 @@
 	<key>name</key>
 	<string>raw html</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc meta.paragraph.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx meta.paragraph.sphinx</string>
 	<key>tabTrigger</key>
 	<string>rawh</string>
 	<key>uuid</key>

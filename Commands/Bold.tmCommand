@@ -33,7 +33,7 @@ end</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>5341F78D-231C-4984-BCE2-DA8EF447F2C2</string>
 </dict>

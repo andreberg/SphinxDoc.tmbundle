@@ -9,7 +9,7 @@
 	<key>name</key>
 	<string>class</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>tabTrigger</key>
 	<string>cla</string>
 	<key>uuid</key>

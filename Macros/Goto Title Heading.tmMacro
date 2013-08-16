@@ -35,7 +35,7 @@
 	<key>name</key>
 	<string>Goto Title Heading</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>1AE077BF-8E4F-4BDA-9419-49D5A792AE4F</string>
 </dict>

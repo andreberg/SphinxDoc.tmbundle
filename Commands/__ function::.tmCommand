@@ -19,7 +19,7 @@
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>50CF29A4-F811-4B6E-8B0C-D6CB7D6457D0</string>
 </dict>

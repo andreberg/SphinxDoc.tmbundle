@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>link (external)</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>tabTrigger</key>
 	<string>le</string>
 	<key>uuid</key>

@@ -8,7 +8,7 @@
 	<key>name</key>
 	<string>figure</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>tabTrigger</key>
 	<string>fi</string>
 	<key>uuid</key>

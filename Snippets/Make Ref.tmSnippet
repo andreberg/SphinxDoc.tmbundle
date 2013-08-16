@@ -9,7 +9,7 @@
 	<key>name</key>
 	<string>Func Ref</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>D3F8B278-529D-47D3-9A74-DB5C5F8BA727</string>
 </dict>

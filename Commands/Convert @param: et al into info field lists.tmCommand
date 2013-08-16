@@ -21,7 +21,7 @@ print lines</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc, source.python</string>
+	<string>text.restructuredtext.sphinx, source.python</string>
 	<key>uuid</key>
 	<string>192C09EA-3774-4174-BC1C-5EC7E93B803A</string>
 </dict>

@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Spell Checking</string>
 	<key>scope</key>
-	<string>meta.paragraph.sphinx.doc - meta.other.directive.sphinx.doc</string>
+	<string>meta.paragraph.sphinx - meta.other.directive.sphinx</string>
 	<key>settings</key>
 	<dict>
 		<key>spellChecking</key>

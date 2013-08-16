@@ -74,7 +74,7 @@ print lines</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc, source.python</string>
+	<string>text.restructuredtext.sphinx, source.python</string>
 	<key>uuid</key>
 	<string>0015D8DC-EDEF-47C1-96FD-3ED96840AEB0</string>
 </dict>

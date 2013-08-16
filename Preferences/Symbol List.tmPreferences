@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List</string>
 	<key>scope</key>
-	<string>entity.directive.sphinx.doc, meta.link.reference.def.sphinx.doc, meta.doctitle.sphinx.doc</string>
+	<string>entity.directive.sphinx, meta.link.reference.def.sphinx, meta.doctitle.sphinx</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

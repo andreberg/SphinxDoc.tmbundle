@@ -188,7 +188,7 @@ print selected.sub(/\A#{Regexp.escape(ENV['TM_CURRENT_WORD'].to_s)}/, "")</strin
 	<key>output</key>
 	<string>afterSelectedText</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>57AEE257-D794-43FF-A39C-4BE0E5F2D002</string>
 </dict>

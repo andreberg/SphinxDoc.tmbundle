@@ -51,7 +51,7 @@ fi</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>2E4120C1-2C93-4F97-B063-B6226A2342A2</string>
 </dict>

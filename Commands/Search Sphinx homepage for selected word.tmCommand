@@ -20,7 +20,7 @@ fi</string>
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>3262EF6A-C221-4D3B-8C1D-894C8DC99A35</string>
 </dict>

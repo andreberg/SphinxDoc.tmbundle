@@ -39,7 +39,7 @@ end</string>
 	<key>output</key>
 	<string>afterSelectedText</string>
 	<key>scope</key>
-	<string>meta.paragraph.sphinx.doc, meta.doctitle.sphinx.doc, text.restructuredtext.sphinx.doc</string>
+	<string>meta.paragraph.sphinx, meta.doctitle.sphinx, text.restructuredtext.sphinx</string>
 	<key>tabTrigger</key>
 	<string>-</string>
 	<key>uuid</key>

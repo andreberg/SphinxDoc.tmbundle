@@ -24,7 +24,7 @@
 				</dict>
 			</dict>
 			<key>contentName</key>
-			<string>meta.doctitle.sphinx.doc</string>
+			<string>meta.doctitle.sphinx</string>
 			<key>end</key>
 			<string>^(\1)$</string>
 			<key>endCaptures</key>
@@ -47,7 +47,7 @@
 			<key>begin</key>
 			<string>^([ \t]*)(?=\S)</string>
 			<key>contentName</key>
-			<string>meta.paragraph.sphinx.doc</string>
+			<string>meta.paragraph.sphinx</string>
 			<key>end</key>
 			<string>^</string>
 			<key>patterns</key>
@@ -93,7 +93,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.comment.sphinx.doc</string>
+							<string>punctuation.definition.comment.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -101,7 +101,7 @@
 					<key>end</key>
 					<string>^(?!\s)</string>
 					<key>name</key>
-					<string>comment.block.double-dot.sphinx.doc</string>
+					<string>comment.block.double-dot.sphinx</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -111,7 +111,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.comment.sphinx.doc</string>
+							<string>punctuation.definition.comment.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -119,7 +119,7 @@
 					<key>end</key>
 					<string>$\n?</string>
 					<key>name</key>
-					<string>comment.line.double-dot.sphinx.doc</string>
+					<string>comment.line.double-dot.sphinx</string>
 				</dict>
 			</array>
 		</dict>
@@ -135,22 +135,22 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.directive.sphinx.doc</string>
+							<string>entity.directive.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.directive.sphinx.doc</string>
+							<string>punctuation.definition.directive.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.separator.key-value.sphinx.doc</string>
+							<string>punctuation.separator.key-value.sphinx</string>
 						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.directive.argument.sphinx.doc</string>
+							<string>string.other.directive.argument.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -171,22 +171,22 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.punctuation.definition.directive.sphinx.doc</string>
+							<string>entity.punctuation.definition.directive.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.other.directive.name.sphinx.doc</string>
+							<string>entity.other.directive.name.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.punctuation.separator.key-value.sphinx.doc</string>
+							<string>entity.punctuation.separator.key-value.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.directive.argument.sphinx.doc</string>
+							<string>string.other.directive.argument.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -194,7 +194,7 @@
 					<key>match</key>
 					<string>(\.\.)(?:\|.*\|)?\s(.*)(::)\s*(.*)$</string>
 					<key>name</key>
-					<string>entity.directive.sphinx.doc</string>
+					<string>entity.directive.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -202,12 +202,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.directive.sphinx.doc</string>
+							<string>punctuation.definition.directive.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.separator.key-value.sphinx.doc</string>
+							<string>punctuation.separator.key-value.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -215,7 +215,7 @@
 					<key>match</key>
 					<string>(\.\.)\s[A-z][A-z0-9-_]+(::)\s*$</string>
 					<key>name</key>
-					<string>meta.other.directive.sphinx.doc</string>
+					<string>meta.other.directive.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -223,12 +223,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.field.sphinx.doc</string>
+							<string>punctuation.definition.field.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.field.sphinx.doc</string>
+							<string>punctuation.definition.field.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -236,7 +236,7 @@
 					<key>match</key>
 					<string>(:)[A-z][A-z0-9\-=\s\t_]*(:)</string>
 					<key>name</key>
-					<string>entity.field.list.name.sphinx.doc</string>
+					<string>entity.field.list.name.sphinx</string>
 				</dict>
 			</array>
 		</dict>
@@ -250,13 +250,13 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.heading.sphinx.doc</string>
+							<string>punctuation.definition.heading.sphinx</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(^(=|-|~|`|#|"|\^|\+|\*){3,}$){1,1}?</string>
 					<key>name</key>
-					<string>markup.heading.sphinx.doc</string>
+					<string>markup.heading.sphinx</string>
 				</dict>
 			</array>
 		</dict>
@@ -270,12 +270,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.bold.sphinx.doc</string>
+							<string>punctuation.definition.bold.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.bold.sphinx.doc</string>
+							<string>punctuation.definition.bold.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -283,7 +283,7 @@
 					<key>match</key>
 					<string>(\*\*)[^*]+(\*\*)</string>
 					<key>name</key>
-					<string>markup.bold.sphinx.doc</string>
+					<string>markup.bold.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -291,7 +291,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.bullet.sphinx.doc</string>
+							<string>punctuation.definition.bullet.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -299,7 +299,7 @@
 					<key>match</key>
 					<string>^(\*)\s</string>
 					<key>name</key>
-					<string>markup.bullets.sphinx.doc</string>
+					<string>markup.bullets.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -307,12 +307,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.italic.sphinx.doc</string>
+							<string>punctuation.definition.italic.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.italic.sphinx.doc</string>
+							<string>punctuation.definition.italic.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -320,7 +320,7 @@
 					<key>match</key>
 					<string>(\*)[^*]+(\*)</string>
 					<key>name</key>
-					<string>markup.italic.sphinx.doc</string>
+					<string>markup.italic.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -328,7 +328,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.substitution.sphinx.doc</string>
+							<string>punctuation.definition.substitution.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -336,7 +336,7 @@
 					<key>match</key>
 					<string>(\|)[^|]+(\|_{0,2})</string>
 					<key>name</key>
-					<string>markup.underline.substitution.sphinx.doc</string>
+					<string>markup.underline.substitution.sphinx</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -346,7 +346,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.raw.sphinx.doc</string>
+							<string>punctuation.definition.raw.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -354,7 +354,7 @@
 					<key>end</key>
 					<string>``</string>
 					<key>name</key>
-					<string>markup.raw.sphinx.doc</string>
+					<string>markup.raw.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -362,12 +362,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.intepreted.sphinx.doc</string>
+							<string>punctuation.definition.intepreted.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.intepreted.sphinx.doc</string>
+							<string>punctuation.definition.intepreted.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -375,7 +375,7 @@
 					<key>match</key>
 					<string>(`)[^`]+(`)(?!_)</string>
 					<key>name</key>
-					<string>markup.other.command.sphinx.doc</string>
+					<string>markup.other.command.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -383,7 +383,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.table.sphinx.doc</string>
+							<string>punctuation.definition.table.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -391,7 +391,7 @@
 					<key>match</key>
 					<string>\+-[+-]+</string>
 					<key>name</key>
-					<string>markup.other.table.sphinx.doc</string>
+					<string>markup.other.table.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -399,7 +399,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.table.sphinx.doc</string>
+							<string>punctuation.definition.table.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -407,7 +407,7 @@
 					<key>match</key>
 					<string>\+=[+=]+</string>
 					<key>name</key>
-					<string>markup.other.table.sphinx.doc</string>
+					<string>markup.other.table.sphinx</string>
 				</dict>
 			</array>
 		</dict>
@@ -421,42 +421,42 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.punctuation.definition.field.sphinx.doc</string>
+							<string>constant.punctuation.definition.field.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>constant.domain.sphinx.doc</string>
+							<string>constant.domain.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>constant.punctuation.definition.field.sphinx.doc</string>
+							<string>constant.punctuation.definition.field.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>constant.type.cross.reference.sphinx.doc</string>
+							<string>constant.type.cross.reference.sphinx</string>
 						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>constant.punctuation.definition.field.sphinx.doc</string>
+							<string>constant.punctuation.definition.field.sphinx</string>
 						</dict>
 						<key>6</key>
 						<dict>
 							<key>name</key>
-							<string>string.punctuation.definition.link.sphinx.doc</string>
+							<string>string.punctuation.definition.link.sphinx</string>
 						</dict>
 						<key>7</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.link.title.sphinx.doc</string>
+							<string>string.other.link.title.sphinx</string>
 						</dict>
 						<key>8</key>
 						<dict>
 							<key>name</key>
-							<string>string.punctuation.definition.link.sphinx.doc</string>
+							<string>string.punctuation.definition.link.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -464,7 +464,7 @@
 					<key>match</key>
 					<string>(?:(:)([\w\.\-_]+))?(:)([^:]+)(:)(`)([^&lt;]+?)(`)</string>
 					<key>name</key>
-					<string>meta.link.cross.reference.sphinx.doc</string>
+					<string>meta.link.cross.reference.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -472,27 +472,27 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>string.punctuation.definition.link.sphinx.doc</string>
+							<string>string.punctuation.definition.link.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>string.punctuation.definition.string.sphinx.doc</string>
+							<string>string.punctuation.definition.string.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.link.title.sphinx.doc</string>
+							<string>string.other.link.title.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>string.punctuation.separator.key-value.sphinx.doc</string>
+							<string>string.punctuation.separator.key-value.sphinx</string>
 						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>markup.underline.link.sphinx.doc</string>
+							<string>markup.underline.link.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -500,7 +500,7 @@
 					<key>match</key>
 					<string>(\.\.)\s+(_)([\w\s\-]+)(:)\s+(.*)</string>
 					<key>name</key>
-					<string>meta.link.reference.def.sphinx.doc</string>
+					<string>meta.link.reference.def.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -508,12 +508,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.link.title.sphinx.doc</string>
+							<string>string.other.link.title.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.link.sphinx.doc</string>
+							<string>punctuation.definition.link.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -529,17 +529,17 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.link.sphinx.doc</string>
+							<string>punctuation.definition.link.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.link.title.sphinx.doc</string>
+							<string>string.other.link.title.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.link.sphinx.doc</string>
+							<string>punctuation.definition.link.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -555,32 +555,32 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.link.sphinx.doc</string>
+							<string>punctuation.definition.link.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.link.title.sphinx.doc</string>
+							<string>string.other.link.title.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.location.sphinx.doc</string>
+							<string>punctuation.definition.location.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>markup.underline.link.sphinx.doc</string>
+							<string>markup.underline.link.sphinx</string>
 						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.location.sphinx.doc</string>
+							<string>punctuation.definition.location.sphinx</string>
 						</dict>
 						<key>6</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.link.sphinx.doc</string>
+							<string>punctuation.definition.link.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -588,7 +588,7 @@
 					<key>match</key>
 					<string>(`)([\w\s]+)\s+(&lt;)(.*?)(&gt;)(`_)</string>
 					<key>name</key>
-					<string>meta.link.inline.sphinx.doc</string>
+					<string>meta.link.inline.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -596,32 +596,32 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.link.sphinx.doc</string>
+							<string>punctuation.definition.link.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>constant.other.footnote.link.sphinx.doc</string>
+							<string>constant.other.footnote.link.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>6</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>7</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>8</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.footnote.sphinx.doc</string>
+							<string>string.other.footnote.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -629,7 +629,7 @@
 					<key>match</key>
 					<string>^(\.\.)\s+((\[)(((#?)[^]]*?)|\*)(\]))\s+(.*)</string>
 					<key>name</key>
-					<string>meta.link.footnote.def.sphinx.doc</string>
+					<string>meta.link.footnote.def.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -642,17 +642,17 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -660,7 +660,7 @@
 					<key>match</key>
 					<string>((\[)[0-9]+(\]))(_)</string>
 					<key>name</key>
-					<string>meta.link.footnote.numeric.sphinx.doc</string>
+					<string>meta.link.footnote.numeric.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -673,17 +673,17 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -691,7 +691,7 @@
 					<key>match</key>
 					<string>((\[#)[A-z0-9_]*(\]))(_)</string>
 					<key>name</key>
-					<string>meta.link.footnote.auto.sphinx.doc</string>
+					<string>meta.link.footnote.auto.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -699,22 +699,22 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.other.footnote.link.sphinx.doc</string>
+							<string>constant.other.footnote.link.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -722,7 +722,7 @@
 					<key>match</key>
 					<string>((\[)\*(\]))(_)</string>
 					<key>name</key>
-					<string>meta.link.footnote.symbol.auto.sphinx.doc</string>
+					<string>meta.link.footnote.symbol.auto.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -730,32 +730,32 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.link.sphinx.doc</string>
+							<string>punctuation.definition.link.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>constant.other.citation.link.sphinx.doc</string>
+							<string>constant.other.citation.link.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>6</key>
 						<dict>
 							<key>name</key>
-							<string>string.other.citation.sphinx.doc</string>
+							<string>string.other.citation.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -763,7 +763,7 @@
 					<key>match</key>
 					<string>^(\.\.)\s+((\[)[A-z][A-z0-9]*(\]))(_)\s+(.*)</string>
 					<key>name</key>
-					<string>meta.link.citation.def.sphinx.doc</string>
+					<string>meta.link.citation.def.sphinx</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -771,22 +771,22 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.other.citation.link.sphinx.doc</string>
+							<string>constant.other.citation.link.sphinx</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.constant.sphinx.doc</string>
+							<string>punctuation.definition.constant.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -794,7 +794,7 @@
 					<key>match</key>
 					<string>((\[)[A-z][A-z0-9_-]*(\]))(_)</string>
 					<key>name</key>
-					<string>meta.link.citation.sphinx.doc</string>
+					<string>meta.link.citation.sphinx</string>
 				</dict>
 			</array>
 		</dict>
@@ -810,12 +810,12 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>markup.raw.sphinx.doc</string>
+							<string>markup.raw.sphinx</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.raw.sphinx.doc</string>
+							<string>punctuation.definition.raw.sphinx</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -823,14 +823,14 @@
 					<key>end</key>
 					<string>^(?=\1[^\s]+)</string>
 					<key>name</key>
-					<string>meta.raw.block.sphinx.doc</string>
+					<string>meta.raw.block.sphinx</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
 							<string>.+</string>
 							<key>name</key>
-							<string>markup.raw.sphinx.doc</string>
+							<string>markup.raw.sphinx</string>
 						</dict>
 					</array>
 				</dict>
@@ -840,13 +840,13 @@
 					<key>match</key>
 					<string>::</string>
 					<key>name</key>
-					<string>meta.startraw.sphinx.doc</string>
+					<string>meta.startraw.sphinx</string>
 				</dict>
 			</array>
 		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>embedded.sphinx.doc</string>
+	<string>text.embedded.sphinx</string>
 	<key>uuid</key>
 	<string>668260F5-8794-4FA6-83DD-B4547F14C455</string>
 </dict>

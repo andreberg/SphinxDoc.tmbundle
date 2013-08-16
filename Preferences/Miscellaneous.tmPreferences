@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Miscellaneous</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc - text.html.template.sphinx</string>
+	<string>text.restructuredtext.sphinx - text.html.template.sphinx</string>
 	<key>settings</key>
 	<dict>
 		<key>shellVariables</key>

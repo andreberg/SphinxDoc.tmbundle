@@ -8,7 +8,7 @@
 	<key>name</key>
 	<string>autofunction</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>tabTrigger</key>
 	<string>autof</string>
 	<key>uuid</key>

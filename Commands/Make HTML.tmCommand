@@ -16,7 +16,7 @@
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc, source.sphinx.conf</string>
+	<string>text.restructuredtext.sphinx, source.sphinx.conf</string>
 	<key>uuid</key>
 	<string>3B3EB310-60C1-41B0-A460-E2ED0E1BAD92</string>
 </dict>

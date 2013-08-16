@@ -25,7 +25,7 @@ echo -e "$output"</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc</string>
+	<string>text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>59D6DB55-1DB4-400A-8474-E8DD640A8B42</string>
 </dict>

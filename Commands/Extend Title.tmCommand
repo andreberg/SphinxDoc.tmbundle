@@ -33,7 +33,7 @@ end</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>meta.paragraph.sphinx.doc, meta.doctitle.sphinx.doc, text.restructuredtext.sphinx.doc</string>
+	<string>meta.paragraph.sphinx, meta.doctitle.sphinx, text.restructuredtext.sphinx</string>
 	<key>uuid</key>
 	<string>46DC2EB4-F7ED-431A-BCEC-CA071618577C</string>
 </dict>

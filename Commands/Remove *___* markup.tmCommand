@@ -19,7 +19,7 @@ print lines.gsub(/\*(.+?)\*/m, "\\1")</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>text.restructuredtext.sphinx.doc, source.python</string>
+	<string>text.restructuredtext.sphinx, source.python</string>
 	<key>uuid</key>
 	<string>C33CD69C-7050-4C7F-B3D7-B9929C60C9C9</string>
 </dict>
