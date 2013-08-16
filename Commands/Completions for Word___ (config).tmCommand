@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+require ENV['TM_SUPPORT_PATH'] + '/lib/osx/plist'
+require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
+
+#choices = OSX::PropertyList.load(File.read(ENV['TM_BUNDLE_SUPPORT'] + '/completions.plist'))
+#TextMate::UI.complete(choices, :initial_filter =&gt; ENV['TM_CURRENT_WORD'], :extra_chars =&gt; ':')
+
+sphinx_confval = [
+   "extensions",                       # A list of strings that are module names of Sphinx extensions
+   "source_suffix",                    # The file name extension of source files
+   "source_encoding",                  # The encoding of all reST source files
+   "master_doc",                       # The document name of the “master” document, that is, the document that contains the root toctree directive.  Default is 'contents'
+   "exclude_patterns",                 # A list of glob-style patterns that should be excluded when looking for source files
+   "unused_docs",                      # A list of document names that are present, but not currently included in the toctree.  Use this setting to suppress the warning that is normally emitted in that case.  Deprecated since version 1
+   "exclude_trees",                    # A list of directory paths, relative to the source directory, that are to be recursively excluded from the search for source files, that is, their subdirectories won’t be searched too
+   "exclude_dirnames",                 # A list of directory names that are to be excluded from any recursive operation Sphinx performs (e.g. searching for source files or copying static files)
+   "templates_path",                   # A list of paths that contain extra templates (or templates that overwrite builtin/theme-specific templates)
+   "template_bridge",                  # A string with the fully-qualified name of a callable (or simply a class) that returns an instance of TemplateBridge.  This instance is then used to render HTML documents, and possibly the output of other builders (currently the changes builder)
+   "rst_epilog",                       # A string of reStructuredText that will be included at the end of every source file that is read
+   "rst_prolog",                       # A string of reStructuredText that will be included at the beginning of every source file that is read
+   "primary_domain",                   # The name of the default domain
+   "default_role",                     # The name of a reST role (builtin or Sphinx extension) to use as the default role, that is, for text marked up `like this`
+   "keep_warnings",                    # If true, keep warnings as “system message” paragraphs in the built documents
+   "needs_sphinx",                     # If set to a major
+   "nitpicky",                         # If true, Sphinx will warn about all references where the target cannot be found
+   "nitpick_ignore",                   # A list of (type, target) tuples (by default empty) that should be ignored when generating warnings in “nitpicky mode”
+   "project",                          # The documented project’s name. 
+   "copyright",                        # A copyright statement in the style '2008, Author Name'
+   "version",                          # The major project version, used as the replacement for |version|
+   "release",                          # The full project version, used as the replacement for |release| and e.g. in the HTML templates
+   "today_fmt",                        # These values determine how to format the current date, used as the replacement for |today|
+   "highlight_language",               # The default language to highlight source code in
+   "pygments_style",                   # The style name to use for Pygments highlighting of source code.  The default style is selected by the theme for HTML output, and 'sphinx' otherwise.  Changed in version 0
+   "add_function_parentheses",         # A boolean that decides whether parentheses are appended to function and method role text (e.g. the content of :func:`input`) to signify that the name is callable.  Default is True. 
+   "add_module_names",                 # A boolean that decides whether module names are prepended to all object names (for object types where a “module” of some kind is defined), e.g. for py:function directives
+   "show_authors",                     # A boolean that decides whether codeauthor and sectionauthor directives produce any output in the built files
+   "modindex_common_prefix",           # A list of prefixes that are ignored for sorting the Python module index (e.g., if this is set to ['foo
+   "trim_footnote_reference_space",    # Trim spaces before footnote references that are necessary for the reST parser to recognize the footnote, but do not look too nice in the output
+   "trim_doctest_flags",               # If true, doctest flags (comments looking like # doctest: FLAG, 
+   "language",                         # The code for the language the docs are written in
+   "locale_dirs",                      #  New in version 0
+   "gettext_compact",                  #  New in version 1
+   "html_theme",                       # The “theme” that the HTML output should use.  See the section about theming.  The default is 'default'
+   "html_theme_options",               # A dictionary of options that influence the look and feel of the selected theme.  These are theme-specific.  For the options understood by the builtin themes, see this section
+   "html_theme_path",                  # A list of paths that contain custom themes, either as subdirectories or as zip files
+   "html_style",                       # The style sheet to use for HTML pages
+   "html_title",                       # The “title” for HTML documentation generated with Sphinx’ own templates
+   "html_short_title",                 # A shorter “title” for the HTML docs
+   "html_context",                     # A dictionary of values to pass into the template engine’s context for all pages
+   "html_logo",                        # If given, this must be the name of an image file that is the logo of the docs
+   "html_favicon",                     # If given, this must be the name of an image file (within the static path, see below) that is the favicon of the docs
+   "html_static_path",                 # A list of paths that contain custom static files (such as style sheets or script files)
+   "html_last_updated_fmt",            # If this is not the empty string, a ‘Last updated on:’ timestamp is inserted at every page bottom, using the given strftime() format
+   "html_use_smartypants",             # If true, SmartyPants will be used to convert quotes and dashes to typographically correct entities
+   "html_add_permalinks",              # Sphinx will add “permalinks” for each heading and description environment as paragraph signs that become visible when the mouse hovers over them
+   "html_sidebars",                    # Custom sidebar templates, must be a dictionary that maps document names to template names
+   "html_additional_pages",            # Additional templates that should be rendered to HTML pages, must be a dictionary that maps document names to template names
+   "html_domain_indices",              # If true, generate domain-specific indices in addition to the general index
+   "html_use_modindex",                # If true, add a module index to the HTML documents
+   "html_use_index",                   # If true, add an index to the HTML documents
+   "html_split_index",                 # If true, the index is generated twice: once as a single page with all the entries, and once as one page per starting letter
+   "html_copy_source",                 # If true, the reST sources are included in the HTML build as _sources/name.  The default is True.  Warning If this config value is set to False, the JavaScript search function will only display the titles of matching documents, and no excerpt from the matching contents
+   "html_show_sourcelink",             # If true (and html_copy_source is true as well), links to the reST sources will be added to the sidebar
+   "html_use_opensearch",              # If nonempty, an OpenSearch &lt;http://opensearch
+   "html_file_suffix",                 # This is the file name suffix for generated HTML files
+   "html_link_suffix",                 # Suffix for generated links to HTML files
+   "html_translator_class",            # A string with the fully-qualified name of a HTML Translator class, that is, a subclass of Sphinx’ HTMLTranslator, that is used to translate document trees to HTML
+   "html_show_copyright",              # If true, “(C) Copyright 
+   "html_show_sphinx",                 # If true, “Created using Sphinx” is shown in the HTML footer
+   "html_output_encoding",             # Encoding of HTML output files
+   "html_compact_lists",               # If true, list items containing only a single paragraph will not be rendered with a &lt;p&gt; element
+   "html_secnumber_suffix",            # Suffix for section numbers
+   "html_search_language",             # Language to be used for generating the HTML full-text search index
+   "html_search_options",              # A dictionary with options for the search language support, empty by default
+   "htmlhelp_basename",                # Output file base name for HTML help builder
+   "epub_basename",                    # The basename for the epub file.  It defaults to the project name. 
+   "epub_theme",                       # The HTML theme for the epub output
+   "epub_title",                       # The title of the document
+   "epub_author",                      # The author of the document
+   "epub_language",                    # The language of the document
+   "epub_publisher",                   # The publisher of the document
+   "epub_copyright",                   # The copyright of the document
+   "epub_identifier",                  # An identifier for the document
+   "epub_scheme",                      # The publication scheme for the epub_identifier
+   "epub_uid",                         # A unique identifier for the document
+   "epub_cover",                       # The cover page information
+   "epub_pre_files",                   # Additional files that should be inserted before the text generated by Sphinx
+   "epub_post_files",                  # Additional files that should be inserted after the text generated by Sphinx
+   "epub_exclude_files",               # A list of files that are generated/copied in the build directory but should not be included in the epub file.  The default value is []
+   "epub_tocdepth",                    # The depth of the table of contents in the file toc.ncx
+   "epub_tocdup",                      # This flag determines if a toc entry is inserted again at the beginning of it’s nested toc listing.  This allows easier navitation to the top of a chapter, but can be confusing because it mixes entries of differnet depth in one list
+   "latex_documents",                  # This value determines how to group the document tree into LaTeX source files
+   "latex_logo",                       # If given, this must be the name of an image file (relative to the configuration directory) that is the logo of the docs
+   "latex_use_parts",                  # If true, the topmost sectioning unit is parts, else it is chapters
+   "latex_appendices",                 # A list of document names to append as an appendix to all manuals
+   "latex_domain_indices",             # If true, generate domain-specific indices in addition to the general index
+   "latex_use_modindex",               # If true, add a module index to LaTeX documents
+   "latex_show_pagerefs",              # If true, add page references after internal references
+   "latex_show_urls",                  # Control whether to display URL addresses
+   "latex_elements",                   #  New in version 0
+   "latex_docclass",                   # A dictionary mapping 'howto' and 'manual' to names of real document classes that will be used as the base for the two Sphinx classes
+   "latex_additional_files",           # A list of file names, relative to the configuration directory, to copy to the build directory when building LaTeX output
+   "latex_preamble",                   # Additional LaTeX markup for the preamble.  Deprecated since version 0
+   "latex_paper_size",                 # The output paper size ('letter' or 'a4')
+   "latex_font_size",                  # The font size (‘10pt’, ‘11pt’ or ‘12pt’)
+   "text_newlines",                    # Determines which end-of-line character(s) are used in text output
+   "text_sectionchars",                # A string of 7 characters that should be used for underlining sections
+   "man_pages",                        # This value determines how to group the document tree into manual pages
+   "man_show_urls",                    # If true, add URL addresses after links
+   "texinfo_documents",                # This value determines how to group the document tree into Texinfo source files
+   "texinfo_appendices",               # A list of document names to append as an appendix to all manuals
+   "texinfo_domain_indices",           # If true, generate domain-specific indices in addition to the general index
+   "texinfo_show_urls",                # Control how to display URL addresses
+   "texinfo_elements",                 # A dictionary that contains Texinfo snippets that override those Sphinx usually puts into the generated 
+   "linkcheck_ignore",                 # A list of regular expressions that match URIs that should not be checked when doing a linkcheck build
+   "linkcheck_timeout",                # A timeout value, in seconds, for the linkcheck builder
+   "linkcheck_workers",                # The number of worker threads to use when checking links
+]
+
+
+COMPLETIONS = (sphinx_confval).sort.uniq
+
+selection = COMPLETIONS.select { |e| e =~ Regexp.new("^#{ENV['TM_CURRENT_WORD']}") }
+
+if selection.length == 1
+  selected = selection.first
+elsif selection.length &gt; 1
+  selected = selection[TextMate::UI.menu(selection)] rescue exit
+else
+  TextMate.exit_show_tool_tip "No matches found."
+end
+
+print selected.sub(/\A#{Regexp.escape(ENV['TM_CURRENT_WORD'].to_s)}/, "")</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>document</string>
+	<key>keyEquivalent</key>
+	<string>~</string>
+	<key>name</key>
+	<string>Completions for Word... (config)</string>
+	<key>output</key>
+	<string>afterSelectedText</string>
+	<key>scope</key>
+	<string>source.sphinx.conf</string>
+	<key>uuid</key>
+	<string>531EDB0E-CF4B-4218-B260-986BE90BF7D8</string>
+</dict>
+</plist>

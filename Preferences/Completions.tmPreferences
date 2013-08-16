@@ -10,7 +10,7 @@
 	<dict>
 		<key>completionCommand</key>
 		<string>ruby &lt;&lt;-'RUBY'
-COMPLETIONS = ["toctree", "module", "moduleauthor", "sectionauthor", "class", "function", "func", "ref"]
+COMPLETIONS = ["default-domain", "module", "currentmodule", "data", "exception", "function", "class", "attribute", "method", "staticmethod", "classmethod", "decorator", "decoratormethod", "function", "member", "macro", "type", "var", "type", "namespace", "option", "envvar", "program", "object", "function", "class", "data", "attribute", "directive", "role", "toctree", "note", "warning", "versionadded", "versionchanged", "deprecated", "seealso", "rubric", "centered", "hlist", "glossary", "productionlist", "literalinclude"]
 cw = ENV["TM_CURRENT_WORD"]
 if cw
   results = []
