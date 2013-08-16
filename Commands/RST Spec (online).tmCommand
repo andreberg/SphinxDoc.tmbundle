@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+
+html_header "reST Specification" "Sphinx"
+
+echo "&lt;meta http-equiv=\"refresh\" content=\"0; http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html\"&gt;"
+
+html_footer
+
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>~</string>
+	<key>name</key>
+	<string>RST Spec (online)</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc</string>
+	<key>uuid</key>
+	<string>791A8C8A-2EFF-42D0-AEF3-8A3F0F8F187C</string>
+</dict>
+</plist>

@@ -5,23 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>saveActiveFile</string>
 	<key>command</key>
-	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
-. "$TM_BUNDLE_SUPPORT/init.sh"
-. "$TM_BUNDLE_SUPPORT/sphinx_build.sh"
-. "$TM_BUNDLE_SUPPORT/browser_refresh.sh"
-
-html_header "Make HTML, Refresh Browser and Switch" "Sphinx Doc"
-
-output=`sphinx_build redirect_stderr`
-
-IFS=$'\n'
-for line in $output; do
-  echo "$line&lt;br/&gt;"
-done 
-
-html_footer
-
-browser_refresh "switch"</string>
+	<string>. "$TM_BUNDLE_SUPPORT/build_refresh_browser_and_switch.sh"</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>

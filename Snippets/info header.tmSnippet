@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>.. _${TM_FILENAME/(.*)\.(.*)/$1/}:
+
+##${1/(.)|(?m:\n.*)/(?1:#)/g}###
+  ${1:${TM_SELECTED_TEXT:TOPIC_HEADLINE}}
+##${1/(.)|(?m:\n.*)/(?1:#)/g}###
+
+:Authors: ${TM_USER_DISPLAY_NAME:${USER:USERNAME}}
+:Email: ${TM_USER_EMAIL:EMAIL}
+:Release: |version|
+:Date: `date '+%Y-%m-%d'`
+
+</string>
+	<key>name</key>
+	<string>info header</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc</string>
+	<key>tabTrigger</key>
+	<string>toph</string>
+	<key>uuid</key>
+	<string>6B5CAF85-5EBC-47AB-B567-B697CF1DFBAF</string>
+</dict>
+</plist>

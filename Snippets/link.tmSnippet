@@ -3,14 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>
-\`${1:Title}&lt;${2:http://link}&gt;\`_</string>
+	<string>\`${1:Title} &lt;${2:http://link}&gt;\`_</string>
 	<key>name</key>
-	<string>link</string>
+	<string>link (external)</string>
 	<key>scope</key>
 	<string>text.restructuredtext.sphinx.doc</string>
 	<key>tabTrigger</key>
-	<string>li</string>
+	<string>le</string>
 	<key>uuid</key>
 	<string>245C32A3-EF90-4D66-A3D4-B67AA2EB080C</string>
 </dict>

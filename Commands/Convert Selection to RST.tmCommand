@@ -15,7 +15,7 @@ preview_selected_text "sphinx"</string>
 	<key>keyEquivalent</key>
 	<string>~@p</string>
 	<key>name</key>
-	<string>Preview Selected Text using Sphinx</string>
+	<string>Preview Selected Text as Sphinx</string>
 	<key>output</key>
 	<string>discard</string>
 	<key>scope</key>

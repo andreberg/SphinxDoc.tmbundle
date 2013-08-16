@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>:${2:${1:py:}func}:\`${TM_SELECTED_TEXT:$TM_CURRENT_WORD}\`</string>
+	<key>keyEquivalent</key>
+	<string>~R</string>
+	<key>name</key>
+	<string>Func Ref</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc</string>
+	<key>uuid</key>
+	<string>D3F8B278-529D-47D3-9A74-DB5C5F8BA727</string>
+</dict>
+</plist>

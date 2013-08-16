@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------
 #
 #  Copyright (c) 2009, Enthought, Inc.
@@ -142,7 +143,7 @@ def sphinx_rest_to_html(rest, static_path=DEFAULT_STATIC_PATH):
         filename = 'sphinx_preview'
         base_path = os.path.join(temp_dir, filename)
         fh = codecs.open(base_path+'.rst', 'w', 'utf-8')
-        fh.write(rest)
+        fh.write(rest.decode('utf-8'))
         fh.close()
 
         overrides = { 'html_add_permalinks' : False,

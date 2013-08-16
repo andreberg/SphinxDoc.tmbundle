@@ -5,20 +5,35 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>TPY=${TM_PYTHON:-pythonw}
-"$TPY" "$TM_BUNDLE_SUPPORT/extend_title.py"</string>
+	<string>#!/usr/bin/env ruby -wKU
+
+require 'jcode'
+require ENV['TM_SUPPORT_PATH'] + '/lib/textmate'
+
+begin
+  python = ENV['TM_PYTHON'].nil? ? "pythonw" : ENV['TM_PYTHON']
+
+  result = `"#{python}" "#{ENV['TM_BUNDLE_SUPPORT']}/extend_title.py"`
+  if $? != 0 then 
+    raise
+  else
+    puts result
+  end
+rescue =&gt; e
+  TextMate.exit_show_tool_tip("Please select the Heading text together with at least one character on the lines before and after.")
+end</string>
 	<key>fallbackInput</key>
-	<string>scope</string>
+	<string>none</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
 	<string>^t</string>
 	<key>name</key>
-	<string>Extend Title</string>
+	<string>Extend Title (Over/Under)</string>
 	<key>output</key>
-	<string>insertAsSnippet</string>
+	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>meta.paragraph.sphinx.doc</string>
+	<string>meta.paragraph.sphinx.doc, meta.doctitle.sphinx.doc, text.restructuredtext.sphinx.doc</string>
 	<key>uuid</key>
 	<string>46DC2EB4-F7ED-431A-BCEC-CA071618577C</string>
 </dict>

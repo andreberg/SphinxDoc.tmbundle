@@ -2,20 +2,58 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>comment</key>
+	<string>handles the Jinja template style used by Sphinx</string>
 	<key>fileTypes</key>
 	<array>
-		<string>layout.html</string>
+		<string>html</string>
 	</array>
 	<key>foldingStartMarker</key>
-	<string>\{% block</string>
+	<string>(\{%-? (block|macro|if|for)|\{#)</string>
 	<key>foldingStopMarker</key>
-	<string>endblock %\}</string>
+	<string>(\{%-? end(block|macro|if|for)|#\})</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>
 	<string>Sphinx Template</string>
 	<key>patterns</key>
 	<array>
+		<dict>
+			<key>include</key>
+			<string>#comment_structure</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#variable_print</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#section_variable</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#control_keywords</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#other_keywords</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#section_punctuation</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#section_structure</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>text.html.basic</string>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>comment_structure</key>
 		<dict>
 			<key>begin</key>
 			<string>\{#</string>
@@ -24,70 +62,211 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>comment</string>
+					<string>comment.block.sphinx.doc.template</string>
 				</dict>
 			</dict>
+			<key>contentName</key>
+			<string>comment.sphinx.doc.template</string>
 			<key>end</key>
 			<string>#\}</string>
-			<key>name</key>
-			<string>comment.html.template.sphinx.doc</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>$self</string>
+					<string>#comment_structure</string>
 				</dict>
 			</array>
 		</dict>
+		<key>control_keywords</key>
 		<dict>
-			<key>begin</key>
-			<string>\{% block (.*?) %\}</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.block.template.sphinx.doc</string>
+					<string>keyword.control.sphinx.doc.template</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?x)\b(if|else|elsif|endif|for|endfor|in|not)\b</string>
+		</dict>
+		<key>control_structure</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(if|for)\b</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.sphinx.doc.template</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\{% endblock %\}</string>
+			<string>(end\1)</string>
 			<key>name</key>
-			<string>text.html.template.sphinx.doc</string>
+			<string>meta.section.control.sphinx.doc.template</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#section_structure</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#control_structure</string>
+				</dict>
+			</array>
+		</dict>
+		<key>other_keywords</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.sphinx.doc.template</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\b(set|include|extends|==)\b</string>
+		</dict>
+		<key>section_punctuation</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.begin.sphinx.doc.template</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.end.sphinx.doc.template</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\{%-?)|(-?%\})</string>
+		</dict>
+		<key>section_structure</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(macro|block)\b\s*([^-%=]+)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.section.begin.sphinx.doc.template</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.section.sphinx.doc.template</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(end\1)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.section.end.sphinx.doc.template</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.section.sphinx.doc.template</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#variable_print</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>text.html.basic</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment_structure</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#section_punctuation</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#section_structure</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#section_variable</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#control_keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#other_keywords</string>
+				</dict>
 			</array>
 		</dict>
+		<key>section_variable</key>
 		<dict>
-			<key>begin</key>
-			<string>\}\}</string>
 			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.embedded.sphinx.doc</string>
+					<string>keyword.other.sphinx.doc.template</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.sphinx.doc.template</string>
 				</dict>
 			</dict>
+			<key>match</key>
+			<string>(set) ([^\s]+)\s*={1,2}</string>
+		</dict>
+		<key>variable_print</key>
+		<dict>
+			<key>begin</key>
+			<string>(\{\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.variable.print.begin.sphinx.doc.template</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.variable.print.sphinx.doc.template</string>
 			<key>end</key>
-			<string>\{\{</string>
-			<key>name</key>
-			<string>text.html.basic.embedded.sphinx.doc</string>
+			<string>(\}\})</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.variable.print.end.sphinx.doc.template</string>
+				</dict>
+			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.sphinx.doc</string>
+					<string>source.python</string>
 				</dict>
 			</array>
 		</dict>
-	</array>
+	</dict>
 	<key>scopeName</key>
-	<string>text.restructuredtext.sphinx.doc.embedded.html</string>
+	<string>text.restructuredtext.sphinx.doc.template</string>
 	<key>uuid</key>
 	<string>5C9E7439-3942-4430-8794-79B29F66C3D1</string>
 </dict>

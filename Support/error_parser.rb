@@ -14,60 +14,61 @@
 
 $LOAD_PATH << "#{ENV["TM_BUNDLE_SUPPORT"]}"
 begin
-  require 'sphinxdoc'
+   require 'sphinxdoc'
 rescue LoadError => e
-  require "/Users/andre/Library/Application Support/TextMate/Bundles/Sphinx Doc.tmbundle/Support/sphinxdoc"
+   homedir = `echo $HOME`.strip()
+   require "#{homedir}/Library/Application Support/TextMate/Bundles/SphinxDoc.tmbundle/Support/sphinxdoc"
 end
 
 def main(args=nil)
-  
-  if args then
-    _argv = args
-  else
-    _argv = ARGV
-  end
-  
-  _argc = _argv.length
-  
-  if _argc == 1
-    error_filepath = _argv[0]
-    tm_filepath = nil
-    command_name = nil
-  elsif _argc == 2
-    error_filepath = _argv[0]
-    tm_filepath = _argv[1]
-    command_name = nil
-  elsif _argc == 3
-    error_filepath = _argv[0]
-    tm_filepath = _argv[1]
-    command_name = _argv[2]
-  else
-    exit 1
-  end
-
-  if command_name
-    ep = SphinxDoc::ErrorParser.new(tool=command_name)
-  else
-    ep = SphinxDoc::ErrorParser.new
-  end
-  
-  if File.exists?(error_filepath) then
-    if File.size(error_filepath) > 0 then
-      result = ep.parse_error_file(error_filepath, tm_filepath)
-      if result.class != TrueClass
-        print result
+   
+   if args then
+      _argv = args
+   else
+      _argv = ARGV
+   end
+   
+   _argc = _argv.length
+   
+   if _argc == 1
+      error_filepath = _argv[0]
+      tm_filepath = nil
+      command_name = nil
+   elsif _argc == 2
+      error_filepath = _argv[0]
+      tm_filepath = _argv[1]
+      command_name = nil
+   elsif _argc == 3
+      error_filepath = _argv[0]
+      tm_filepath = _argv[1]
+      command_name = _argv[2]
+   else
+      exit 1
+   end
+   
+   if command_name
+      ep = SphinxDoc::ErrorParser.new(tool=command_name)
+   else
+      ep = SphinxDoc::ErrorParser.new
+   end
+   
+   if File.exists?(error_filepath) then
+      if File.size(error_filepath) > 0 then
+         result = ep.parse_error_file(error_filepath, tm_filepath)
+         if result.class != TrueClass
+            print result
+         end
       end
-    end
-  else
-    result = ep.parse_errors(STDIN)
-    if result.class != TrueClass
-      print result
-    end
-  end
-  
+   else
+      result = ep.parse_errors(STDIN)
+      if result.class != TrueClass
+         print result
+      end
+   end
+   
 end
 
 if $0 == __FILE__ then
-  #main(["/tmp/tm_sphinx_doc_errors.txt", "sphinx-build"])
-  main()
+   #main(["/tmp/tm_sphinx_doc_errors.txt", "sphinx-build"])
+   main()
 end

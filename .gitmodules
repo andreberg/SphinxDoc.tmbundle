@@ -1,0 +1,3 @@
+[submodule "Support/bundle_tools/sphinxhp_extract"]
+	path = Support/bundle_tools/sphinxhp_extract
+	url = https://github.com/andreberg/sphinxhp_extract.git

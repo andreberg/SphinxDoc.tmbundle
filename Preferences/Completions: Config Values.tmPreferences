@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Completions: Config Values</string>
+	<key>scope</key>
+	<string>source.sphinx.conf</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>            
+			<string>extensions</string>                     <!-- A list of strings that are module names of Sphinx extensions -->
+            <string>source_suffix</string>                  <!-- The file name extension of source files -->
+            <string>source_encoding</string>                <!-- The encoding of all reST source files -->
+            <string>master_doc</string>                     <!-- The document name of the “master” document, that is, the document that contains the root toctree directive.  Default is 'contents' -->
+            <string>exclude_patterns</string>               <!-- A list of glob-style patterns that should be excluded when looking for source files -->
+            <string>unused_docs</string>                    <!-- A list of document names that are present, but not currently included in the toctree.  Use this setting to suppress the warning that is normally emitted in that case.  Deprecated since version 1 -->
+            <string>exclude_trees</string>                  <!-- A list of directory paths, relative to the source directory, that are to be recursively excluded from the search for source files, that is, their subdirectories won’t be searched too -->
+            <string>exclude_dirnames</string>               <!-- A list of directory names that are to be excluded from any recursive operation Sphinx performs (e.g. searching for source files or copying static files) -->
+            <string>templates_path</string>                 <!-- A list of paths that contain extra templates (or templates that overwrite builtin/theme-specific templates) -->
+            <string>template_bridge</string>                <!-- A string with the fully-qualified name of a callable (or simply a class) that returns an instance of TemplateBridge.  This instance is then used to render HTML documents, and possibly the output of other builders (currently the changes builder) -->
+            <string>rst_epilog</string>                     <!-- A string of reStructuredText that will be included at the end of every source file that is read -->
+            <string>rst_prolog</string>                     <!-- A string of reStructuredText that will be included at the beginning of every source file that is read -->
+            <string>primary_domain</string>                 <!-- The name of the default domain -->
+            <string>default_role</string>                   <!-- The name of a reST role (builtin or Sphinx extension) to use as the default role, that is, for text marked up `like this` -->
+            <string>keep_warnings</string>                  <!-- If true, keep warnings as “system message” paragraphs in the built documents -->
+            <string>needs_sphinx</string>                   <!-- If set to a major -->
+            <string>nitpicky</string>                       <!-- If true, Sphinx will warn about all references where the target cannot be found -->
+            <string>nitpick_ignore</string>                 <!-- A list of (type, target) tuples (by default empty) that should be ignored when generating warnings in “nitpicky mode” -->
+            <string>project</string>                        <!-- The documented project’s name.  -->
+            <string>copyright</string>                      <!-- A copyright statement in the style '2008, Author Name' -->
+            <string>version</string>                        <!-- The major project version, used as the replacement for |version| -->
+            <string>release</string>                        <!-- The full project version, used as the replacement for |release| and e.g. in the HTML templates -->
+            <string>today_fmt</string>                      <!-- These values determine how to format the current date, used as the replacement for |today| -->
+            <string>highlight_language</string>             <!-- The default language to highlight source code in -->
+            <string>pygments_style</string>                 <!-- The style name to use for Pygments highlighting of source code.  The default style is selected by the theme for HTML output, and 'sphinx' otherwise.  Changed in version 0 -->
+            <string>add_function_parentheses</string>       <!-- A boolean that decides whether parentheses are appended to function and method role text (e.g. the content of :func:`input`) to signify that the name is callable.  Default is True.  -->
+            <string>add_module_names</string>               <!-- A boolean that decides whether module names are prepended to all object names (for object types where a “module” of some kind is defined), e.g. for py:function directives -->
+            <string>show_authors</string>                   <!-- A boolean that decides whether codeauthor and sectionauthor directives produce any output in the built files -->
+            <string>modindex_common_prefix</string>         <!-- A list of prefixes that are ignored for sorting the Python module index (e.g., if this is set to ['foo -->
+            <string>trim_footnote_reference_space</string>  <!-- Trim spaces before footnote references that are necessary for the reST parser to recognize the footnote, but do not look too nice in the output -->
+            <string>trim_doctest_flags</string>             <!-- If true, doctest flags (comments looking like # doctest: FLAG,  -->
+            <string>language</string>                       <!-- The code for the language the docs are written in -->
+            <string>locale_dirs</string>                    <!--  New in version 0 -->
+            <string>gettext_compact</string>                <!--  New in version 1 -->
+            <string>html_theme</string>                     <!-- The “theme” that the HTML output should use.  See the section about theming.  The default is 'default' -->
+            <string>html_theme_options</string>             <!-- A dictionary of options that influence the look and feel of the selected theme.  These are theme-specific.  For the options understood by the builtin themes, see this section -->
+            <string>html_theme_path</string>                <!-- A list of paths that contain custom themes, either as subdirectories or as zip files -->
+            <string>html_style</string>                     <!-- The style sheet to use for HTML pages -->
+            <string>html_title</string>                     <!-- The “title” for HTML documentation generated with Sphinx’ own templates -->
+            <string>html_short_title</string>               <!-- A shorter “title” for the HTML docs -->
+            <string>html_context</string>                   <!-- A dictionary of values to pass into the template engine’s context for all pages -->
+            <string>html_logo</string>                      <!-- If given, this must be the name of an image file that is the logo of the docs -->
+            <string>html_favicon</string>                   <!-- If given, this must be the name of an image file (within the static path, see below) that is the favicon of the docs -->
+            <string>html_static_path</string>               <!-- A list of paths that contain custom static files (such as style sheets or script files) -->
+            <string>html_last_updated_fmt</string>          <!-- If this is not the empty string, a ‘Last updated on:’ timestamp is inserted at every page bottom, using the given strftime() format -->
+            <string>html_use_smartypants</string>           <!-- If true, SmartyPants will be used to convert quotes and dashes to typographically correct entities -->
+            <string>html_add_permalinks</string>            <!-- Sphinx will add “permalinks” for each heading and description environment as paragraph signs that become visible when the mouse hovers over them -->
+            <string>html_sidebars</string>                  <!-- Custom sidebar templates, must be a dictionary that maps document names to template names -->
+            <string>html_additional_pages</string>          <!-- Additional templates that should be rendered to HTML pages, must be a dictionary that maps document names to template names -->
+            <string>html_domain_indices</string>            <!-- If true, generate domain-specific indices in addition to the general index -->
+            <string>html_use_modindex</string>              <!-- If true, add a module index to the HTML documents -->
+            <string>html_use_index</string>                 <!-- If true, add an index to the HTML documents -->
+            <string>html_split_index</string>               <!-- If true, the index is generated twice: once as a single page with all the entries, and once as one page per starting letter -->
+            <string>html_copy_source</string>               <!-- If true, the reST sources are included in the HTML build as _sources/name.  The default is True.  Warning If this config value is set to False, the JavaScript search function will only display the titles of matching documents, and no excerpt from the matching contents -->
+            <string>html_show_sourcelink</string>           <!-- If true (and html_copy_source is true as well), links to the reST sources will be added to the sidebar -->
+            <string>html_use_opensearch</string>            <!-- If nonempty, an OpenSearch <http://opensearch -->
+            <string>html_file_suffix</string>               <!-- This is the file name suffix for generated HTML files -->
+            <string>html_link_suffix</string>               <!-- Suffix for generated links to HTML files -->
+            <string>html_translator_class</string>          <!-- A string with the fully-qualified name of a HTML Translator class, that is, a subclass of Sphinx’ HTMLTranslator, that is used to translate document trees to HTML -->
+            <string>html_show_copyright</string>            <!-- If true, “(C) Copyright  -->
+            <string>html_show_sphinx</string>               <!-- If true, “Created using Sphinx” is shown in the HTML footer -->
+            <string>html_output_encoding</string>           <!-- Encoding of HTML output files -->
+            <string>html_compact_lists</string>             <!-- If true, list items containing only a single paragraph will not be rendered with a <p> element -->
+            <string>html_secnumber_suffix</string>          <!-- Suffix for section numbers -->
+            <string>html_search_language</string>           <!-- Language to be used for generating the HTML full-text search index -->
+            <string>html_search_options</string>            <!-- A dictionary with options for the search language support, empty by default -->
+            <string>htmlhelp_basename</string>              <!-- Output file base name for HTML help builder -->
+            <string>epub_basename</string>                  <!-- The basename for the epub file.  It defaults to the project name.  -->
+            <string>epub_theme</string>                     <!-- The HTML theme for the epub output -->
+            <string>epub_title</string>                     <!-- The title of the document -->
+            <string>epub_author</string>                    <!-- The author of the document -->
+            <string>epub_language</string>                  <!-- The language of the document -->
+            <string>epub_publisher</string>                 <!-- The publisher of the document -->
+            <string>epub_copyright</string>                 <!-- The copyright of the document -->
+            <string>epub_identifier</string>                <!-- An identifier for the document -->
+            <string>epub_scheme</string>                    <!-- The publication scheme for the epub_identifier -->
+            <string>epub_uid</string>                       <!-- A unique identifier for the document -->
+            <string>epub_cover</string>                     <!-- The cover page information -->
+            <string>epub_pre_files</string>                 <!-- Additional files that should be inserted before the text generated by Sphinx -->
+            <string>epub_post_files</string>                <!-- Additional files that should be inserted after the text generated by Sphinx -->
+            <string>epub_exclude_files</string>             <!-- A list of files that are generated/copied in the build directory but should not be included in the epub file.  The default value is [] -->
+            <string>epub_tocdepth</string>                  <!-- The depth of the table of contents in the file toc.ncx -->
+            <string>epub_tocdup</string>                    <!-- This flag determines if a toc entry is inserted again at the beginning of it’s nested toc listing.  This allows easier navitation to the top of a chapter, but can be confusing because it mixes entries of differnet depth in one list -->
+            <string>latex_documents</string>                <!-- This value determines how to group the document tree into LaTeX source files -->
+            <string>latex_logo</string>                     <!-- If given, this must be the name of an image file (relative to the configuration directory) that is the logo of the docs -->
+            <string>latex_use_parts</string>                <!-- If true, the topmost sectioning unit is parts, else it is chapters -->
+            <string>latex_appendices</string>               <!-- A list of document names to append as an appendix to all manuals -->
+            <string>latex_domain_indices</string>           <!-- If true, generate domain-specific indices in addition to the general index -->
+            <string>latex_use_modindex</string>             <!-- If true, add a module index to LaTeX documents -->
+            <string>latex_show_pagerefs</string>            <!-- If true, add page references after internal references -->
+            <string>latex_show_urls</string>                <!-- Control whether to display URL addresses -->
+            <string>latex_elements</string>                 <!--  New in version 0 -->
+            <string>latex_docclass</string>                 <!-- A dictionary mapping 'howto' and 'manual' to names of real document classes that will be used as the base for the two Sphinx classes -->
+            <string>latex_additional_files</string>         <!-- A list of file names, relative to the configuration directory, to copy to the build directory when building LaTeX output -->
+            <string>latex_preamble</string>                 <!-- Additional LaTeX markup for the preamble.  Deprecated since version 0 -->
+            <string>latex_paper_size</string>               <!-- The output paper size ('letter' or 'a4') -->
+            <string>latex_font_size</string>                <!-- The font size (‘10pt’, ‘11pt’ or ‘12pt’) -->
+            <string>text_newlines</string>                  <!-- Determines which end-of-line character(s) are used in text output -->
+            <string>text_sectionchars</string>              <!-- A string of 7 characters that should be used for underlining sections -->
+            <string>man_pages</string>                      <!-- This value determines how to group the document tree into manual pages -->
+            <string>man_show_urls</string>                  <!-- If true, add URL addresses after links -->
+            <string>texinfo_documents</string>              <!-- This value determines how to group the document tree into Texinfo source files -->
+            <string>texinfo_appendices</string>             <!-- A list of document names to append as an appendix to all manuals -->
+            <string>texinfo_domain_indices</string>         <!-- If true, generate domain-specific indices in addition to the general index -->
+            <string>texinfo_show_urls</string>              <!-- Control how to display URL addresses -->
+            <string>texinfo_elements</string>               <!-- A dictionary that contains Texinfo snippets that override those Sphinx usually puts into the generated  -->
+            <string>linkcheck_ignore</string>               <!-- A list of regular expressions that match URIs that should not be checked when doing a linkcheck build -->
+            <string>linkcheck_timeout</string>              <!-- A timeout value, in seconds, for the linkcheck builder -->
+            <string>linkcheck_workers</string>              <!-- The number of worker threads to use when checking links -->
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>2E57A879-5758-4FD5-B945-34385857916C</string>
+</dict>
+</plist>

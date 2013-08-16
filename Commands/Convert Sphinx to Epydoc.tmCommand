@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+class SphinxToEpydocConverter
+  
+  def col_param_to_at_param(s)
+    s.gsub(/:(.+?)(\s+?)(.+?):(?!\/\/)/, "@\\1\\2\\3:")
+  end
+
+  def col_field_to_at_field(s)
+    s.gsub(/:(.+?):(?!\/\/)/, "@\\1:")
+  end
+
+  def convert_no_colon_field(s)
+    s.gsub(/:(return|returns|deffield):(?!\/\/)/, "@\\1")
+  end
+
+  def convert_code(s)
+    s.gsub(/``([\s\S]+?)``/, 'C{\1}')
+  end
+
+  def convert_bold(s)
+    s.gsub(/\*\*([\s\S]+?)\*\*/, 'B{\1}')
+  end
+
+  def convert_italic(s)
+    s.gsub(/_(.+?)_/, 'I{\1}')
+    s.gsub(/\*(.+?)\*/, 'I{\1}')
+  end
+
+  def convert_link(s)
+    s.gsub(/`.+? &lt;([\s\S]+?)&gt;`_/, 'L{\1}')
+  end
+  
+  def convert(text)
+    text = convert_no_colon_field(text)
+    text = col_param_to_at_param(text)
+    text = col_field_to_at_field(text)
+    text = convert_code(text)
+    text = convert_bold(text)
+    text = convert_italic(text)
+    text = convert_link(text)
+  end
+end
+
+
+lines = STDIN.read
+stoe_converter = SphinxToEpydocConverter.new
+lines = stoe_converter.convert(lines)
+
+#lines = lines.gsub(/@(return|returns|deffield|raise)(?!:)/m, ":\\1:")  # @field -&gt; :field:
+#lines = lines.gsub(/@(.+?)(\s+?)(.+?):/m, ":\\1\\2\\3:")    # @param xyz: -&gt; :param xyz:
+#lines = lines.gsub(/@(.+?):/m, ":\\1:")                     # @field: -&gt; :field:
+#lines = lines.gsub(/U\{(.+?)\}/m, "\\1")                    # U{...} -&gt; ...
+#lines = lines.gsub(/C\{(.+?)\}/m, "``\\1``")                # C{...} -&gt; ``...``
+#lines = lines.gsub(/B\{(.+?)\}/m, "**\\1**")                # B{...} -&gt; **...**
+#lines = lines.gsub(/I\{(.+?)\}/m, "*\\1*")                  # I{...} -&gt; *...*
+#lines = lines.gsub(/L\{(.+?)\}/m, "`\\1 &lt;\\1&gt;`_")           # L{...} -&gt; `... &lt;...&gt;`
+#lines = lines.gsub(/:([a-zA-Z0-9_-]+[\n\r]\s*def)/, "@\\1") # :xyz\n   def -&gt; @xyz\n   def
+
+print lines</string>
+	<key>fallbackInput</key>
+	<string>none</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>~M</string>
+	<key>name</key>
+	<string>Convert Sphinx to Epydoc</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc, source.python</string>
+	<key>uuid</key>
+	<string>006B4D19-9615-4533-9B0C-FE080E307609</string>
+</dict>
+</plist>

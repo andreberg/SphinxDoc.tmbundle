@@ -5,43 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>saveActiveFile</string>
 	<key>command</key>
-	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
-. "$TM_BUNDLE_SUPPORT/init.sh"
-. "$TM_BUNDLE_SUPPORT/sphinx_build.sh"
-
-mode="html"
-ext="$mode"
-
-DEBUG=0
-
-if [[ "$DEBUG" = 1 ]]; then    
-    	basepath="/Users/andre/Documents/Aptana Studio 2.0/Workspaces/Python/File Sequence Checker/doc/sphinx"
-    	builddir="_build"
-    	target=`python "/Users/andre/Library/Application Support/TextMate/Bundles/Sphinx Doc.tmbundle/Support/get_target.py" "$basepath" "$fullname"`
-    	echo "target = $target"
-else
-    	basepath="$current_dir"
-    	builddir="$build_dir"
-	target=`"$python" "${TM_BUNDLE_SUPPORT}/get_target.py" "$basepath" "$current_file"`
-fi
-
-html_header "Build and Open in Browser" "Sphinx Doc"
-
-output=`run_sphinx_build "redirect_stderr"`
-
-# output sphinx-build status messages to HTML preview window
-
-IFS=$'\n'
-for line in $output; do
-  echo "$line&lt;br/&gt;"
-done 
-
-html_footer
-
-# open in browser
-open "$target"
-
-</string>
+	<string>. "$TM_BUNDLE_SUPPORT/build_and_open_in_browser.sh"</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>

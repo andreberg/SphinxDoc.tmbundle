@@ -1,0 +1,76 @@
+# Generic stuff
+
+*~
+*.[oa]
+*.bak
+backup/
+*.zip
+
+# Mac OS X stuff
+
+Desktop DF
+Desktop DB
+.Spotlight-V100
+.DS_Store
+.Trashes
+.com.apple.timemachine.supported
+.fseventsd
+.syncinfo
+.TemporaryItems
+._.*
+
+# Windows stuff
+
+Thumbs.db
+desktop.ini
+
+# TextMate Stuff
+
+*.tm_build_errors
+*.tmproj
+
+# Python stuff
+
+*.pyc
+__pycache__/
+
+# Eclipse/Pydev stuff
+.project
+.pydevproject
+.settings
+.coverage
+unused__*
+profile_stats.txt
+*_profile.txt
+*-profile.pstats
+*-profile.pstats.txt
+
+# Python Coverage
+
+htmlcov
+.coverage
+
+# Epydoc
+
+html
+
+# Sphinx
+
+_build
+_templates
+_static
+
+# Distutils stuff
+
+build/
+
+# Project specific
+
+*profile.out
+*profile_stats.txt
+profile_graph.png
+tests/
+
+# distutils stuff
+MANIFEST
+dist/

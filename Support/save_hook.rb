@@ -37,7 +37,8 @@ require "escape"
 require 'open3'
 
 if $DEBUG
-  require "/Users/andre/Library/Application Support/TextMate/Bundles/Sphinx Doc.tmbundle/Support/sphinxdoc"
+  homedir = `echo $HOME`.strip()
+  require  homedir + "/Library/Application Support/TextMate/Bundles/SphinxDoc.tmbundle/Support/sphinxdoc"
 else
   require "#{ENV["TM_BUNDLE_SUPPORT"]}/sphinxdoc"
 end

@@ -5,24 +5,8 @@
 	<key>beforeRunningCommand</key>
 	<string>saveActiveFile</string>
 	<key>command</key>
-	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
-. "$TM_BUNDLE_SUPPORT/init.sh"
-. "$TM_BUNDLE_SUPPORT/sphinx_build.sh"
-
-html_header "Build" "Sphinx Doc"
-
-output=`run_sphinx_build redirect_stderr`
-
-IFS=$'\n'
-for line in $output; do
-  echo "$line&lt;br/&gt;"
-done 
-
-if [[ -s "$errors_tmp_file" ]]; then
-	"$ruby" "$TM_BUNDLE_SUPPORT/error_parser.rb" "$errors_tmp_file"
-fi
-
-html_footer</string>
+	<string>. "$TM_BUNDLE_SUPPORT/build.sh"
+</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>

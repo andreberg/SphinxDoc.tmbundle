@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+lines = STDIN.read
+lines = lines.gsub(/@(.+?)(\s+?)(.+?):/m, ":\\1\\2\\3:") # @param xyz: -&gt; :param xyz:
+lines = lines.gsub(/@(.+?):/m, ":\\1:") # @field: -&gt; :field:
+print lines</string>
+	<key>fallbackInput</key>
+	<string>none</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>~M</string>
+	<key>name</key>
+	<string>Convert @param: et al into info field lists</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc, source.python</string>
+	<key>uuid</key>
+	<string>192C09EA-3774-4174-BC1C-5EC7E93B803A</string>
+</dict>
+</plist>

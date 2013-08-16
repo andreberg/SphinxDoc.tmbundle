@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+require "#{ENV['TM_SUPPORT_PATH']}/lib/escape" 
+
+selected_text = "#{ENV['TM_SELECTED_TEXT']}".chomp
+
+print "\\\`\$\{1:#{selected_text}\} &lt;\$\{2:link\}&gt;\\\`_"
+</string>
+	<key>fallbackInput</key>
+	<string>word</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>~L</string>
+	<key>name</key>
+	<string>External Link</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc</string>
+	<key>uuid</key>
+	<string>150E7580-1461-4FF2-A4B5-3FFE29AE533A</string>
+</dict>
+</plist>

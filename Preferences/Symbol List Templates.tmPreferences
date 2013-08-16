@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List: Templates</string>
 	<key>scope</key>
-	<string>entity.block.template.sphinx.doc</string>
+	<string>entity.name.section.sphinx.doc.template</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

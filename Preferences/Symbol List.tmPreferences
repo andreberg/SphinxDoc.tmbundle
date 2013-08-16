@@ -13,9 +13,8 @@
 		<key>symbolTransformation</key>
 		<string>
 		s/^ \b//g;
-      	s/^\.\. (.*)::\s*?(.*)$/    $1/g;
-		
-		s/\.\. _(.*?):/$1/g;
+      	s/^\.\. (.*)::\s*?(.*)$/$2/g;
+		s/\.\. _(.*?):/$1 (ref)/g;
 	</string>
 	</dict>
 	<key>uuid</key>

@@ -29,7 +29,7 @@ end</string>
 	<key>keyEquivalent</key>
 	<string>^k</string>
 	<key>name</key>
-	<string>Typewriter</string>
+	<string>Code</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>

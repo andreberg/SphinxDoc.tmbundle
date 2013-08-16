@@ -13,19 +13,19 @@
 #  interface.
 #
 #  You can find more functions in init.sh which
-#  are used in earlier points in time. 
+#  are used at earlier points in execution order. 
 #
 
 . "$TM_BUNDLE_SUPPORT/init.sh"
 
-function present_errors() {
+function present_errors () {
     # $1: tool name => sphinx-build or docutils
     echo "<p>"
     "$ruby" "$TM_BUNDLE_SUPPORT/error_parser.rb" "$errors_tmp_file" "$current_file" "${1:-sphinx-build}"
     echo "</p>"
 }
 
-function prepend_error_label() {
+function prepend_error_label () {
     # $2: if "true" or 1, pre-ify text
     if [[ ${#} = 2 ]]; then
         if [[ "$2" = "true" || "$2" = 1 ]]; then
@@ -44,7 +44,7 @@ function prepend_error_label() {
 	echo '</pre>'
 }
 
-function preview_selected_text() {
+function preview_selected_text () {
     
     . "$TM_SUPPORT_PATH/lib/webpreview.sh"
     
@@ -55,10 +55,13 @@ function preview_selected_text() {
     pythonscript=`cat <<EOF
 import sys
 try:
+    # Next line is needed to squash the 'cannot import name FileOutput' bug.
+    # For details see: http://sourceforge.net/p/docutils/bugs/214
+    import docutils.utils  
     import rested_util
     from sphinxdoc import SphinxDocUtils as util
 except Exception, e:
-    msg = """$err_python_modules_not_found"""
+    msg = """$err_python_modules_not_found.\n\nThe error message was: \n\n%r""" % e
     sys.stderr.write(msg+"\n")
     sys.exit(1)
 

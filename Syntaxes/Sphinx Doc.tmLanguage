@@ -236,7 +236,7 @@
 					<key>comment</key>
 					<string>field list</string>
 					<key>match</key>
-					<string>(:)[A-z][A-z0-9\-=\s\t_]*(:)</string>
+					<string>(:)[A-z][A-z0-9\-=\s\t_\.]*(:)</string>
 					<key>name</key>
 					<string>entity.field.list.name.sphinx.doc</string>
 				</dict>
@@ -272,12 +272,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.italic.sphinx.doc</string>
+							<string>punctuation.definition.bold.sphinx.doc</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.italic.sphinx.doc</string>
+							<string>punctuation.definition.bold.sphinx.doc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -286,6 +286,22 @@
 					<string>(\*\*)[^*]+(\*\*)</string>
 					<key>name</key>
 					<string>markup.bold.sphinx.doc</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.bullet.sphinx.doc</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>bullet points</string>
+					<key>match</key>
+					<string>^(\*)\s</string>
+					<key>name</key>
+					<string>markup.bullets.sphinx.doc</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -304,7 +320,28 @@
 					<key>comment</key>
 					<string>emphasis</string>
 					<key>match</key>
-					<string>(\*)\w[^*]\w+(\*)</string>
+					<string>(\*)[^*]+(\*)</string>
+					<key>name</key>
+					<string>markup.italic.sphinx.doc</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.italic.sphinx.doc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.italic.sphinx.doc</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>emphasis</string>
+					<key>match</key>
+					<string>(`)[^`]+(`)</string>
 					<key>name</key>
 					<string>markup.italic.sphinx.doc</string>
 				</dict>
@@ -373,25 +410,25 @@
 						</dict>
 					</dict>
 					<key>comment</key>
-					<string>table</string>
+					<string>table horizontal</string>
 					<key>match</key>
-					<string>\+-[+-]+</string>
+					<string>\+?[\-=][\+\-=]+</string>
 					<key>name</key>
 					<string>markup.other.table.sphinx.doc</string>
 				</dict>
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>0</key>
+						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.table.sphinx.doc</string>
+							<string>punctuation.definition.substitution.sphinx.doc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
-					<string>table</string>
+					<string>table vertical</string>
 					<key>match</key>
-					<string>\+=[+=]+</string>
+					<string>(\|)+</string>
 					<key>name</key>
 					<string>markup.other.table.sphinx.doc</string>
 				</dict>

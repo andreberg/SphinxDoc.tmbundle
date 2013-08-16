@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>if [[ -n "$TM_SELECTED_TEXT" ]]; then
+	url="http://www.google.com/search?as_q=$TM_SELECTED_TEXT&amp;as_sitesearch=docutils.sourceforge.net"
+	echo "&lt;meta http-equiv='Refresh' content='0;URL=$url'&gt;"
+fi</string>
+	<key>fallbackInput</key>
+	<string>word</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^h</string>
+	<key>name</key>
+	<string>Search Docutils homepage for selected word</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc</string>
+	<key>uuid</key>
+	<string>50F61604-4CC5-4F37-8407-62C13017797E</string>
+</dict>
+</plist>

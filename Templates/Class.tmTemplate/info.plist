@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+f = open(ENV["TM_NEW_FILE"], 'w')
+template = open("template.rst").read
+
+ENV["TM_YEAR"] = `date +%Y`.chomp
+ENV["TM_DATE"] = `date +%Y-%m-%d`.chomp
+
+if ENV["TM_SOFT_TABS"] == "YES"
+	tab_size = ENV["TM_TAB_SIZE"].to_i
+	tab_size = tab_size ? tab_size : 4
+	template = template.gsub(/\t/, " "*tab_size)
+end
+
+
+# HotFlamingCats -&gt; hot_flaming_cats
+def pascalcase_to_snakecase(word)
+	word.gsub(/\B([A-Z])(?=[a-z0-9])|([a-z0-9])([A-Z])/, '\2_\+').downcase
+end
+
+# hot_flaming_cats -&gt; hotFlamingCats
+def snakecase_to_camelcase(word)
+  word.gsub(/_([^_]+)/) { $1.capitalize }
+end
+
+# hotFlamingCats -&gt; HotFlamingCats
+def camelcase_to_pascalcase(word)
+	word.gsub(/^\w{1}/) {|c| c.upcase}
+end
+
+# hot flaming cats  -&gt; HotFlamingCats
+# HotFlamingCats  -&gt; HotFlamingCats
+# hotFlamingCats  -&gt; HotFlamingCats
+# hot_flaming_cats  -&gt; HotFlamingCats
+# Hot Flaming _ Cats  -&gt; HotFlamingCats
+def split_to_camelcase(word)
+  #word = word.downcase
+  #word = word.capitalize
+  word = word.gsub(/_([^_]+)/) { $1.capitalize }
+  word = word.gsub(/ ([^ ]+)/) { $1.capitalize }
+  word = word.gsub(" ", "")
+  if RUBY_VERSION =~ /1.9/ then
+    if word[0].ord &gt; 96 then
+      word = word[0].upcase + word[1..-1]
+    end
+  else
+    if word[0] &gt; 96 then
+      word = word[0..0].upcase + word[1..-1]
+    end
+  end
+  word
+end
+
+username = ENV["TM_USER_DISPLAY_NAME"] || ENV["USER"] || "&lt;username&gt;"
+useremail = ENV["TM_USER_EMAIL"] || "&lt;user_email&gt;"
+organization = ENV["TM_ORGANIZATION_NAME"] || "&lt;organization&gt;"
+
+filename = ENV["TM_NEW_FILE_BASENAME"]
+filename_camelcase = split_to_camelcase(filename)
+filename_snakecase = pascalcase_to_snakecase(filename_camelcase)
+
+template = template.gsub(/[$]\{([^}]+)\}/){|match| "#{ENV[$1]}" }
+template = template.gsub("&lt;filename&gt;", "#{filename}")
+template = template.gsub("&lt;filename-as-ref&gt;", "#{filename_snakecase}")
+template = template.gsub("&lt;username&gt;", "#{username}")
+template = template.gsub("&lt;useremail&gt;", "#{useremail}")
+template = template.gsub("&lt;organization&gt;", "#{organization}")
+
+f.write template
+f.close
+</string>
+	<key>extension</key>
+	<string>rst</string>
+	<key>name</key>
+	<string>Class</string>
+	<key>uuid</key>
+	<string>E6F8EF25-D216-4C69-B26D-59B08342DC0B</string>
+</dict>
+</plist>

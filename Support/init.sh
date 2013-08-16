@@ -5,7 +5,10 @@
 #  Created by Andre Berg on 2010-12-07.
 #  Copyright 2010 Berg Media. All rights reserved.
 # 
-#  Init values that can be sourced
+#  this file houses project-wide variables and 
+#  basic functions. it is intended to be included
+#  as a first step in every shell based command.
+#
 
 . "$TM_SUPPORT_PATH/lib/bash_init.sh"
 
@@ -14,23 +17,25 @@
 # --------------------------------------------------------------------
 
 # variables shared throughout the whole bundle
-
 errors_tmp_file="/tmp/tm_sphinx_doc_errors.txt"
 output_tmp_file="/tmp/tm_sphinx_doc_output.txt"
 output_tmp_file_html="${output_tmp_file%%.*}.html"
 
-current_dir="${TM_PROJECT_DIRECTORY:-$TM_DIRECTORY}"
+current_dir="${TM_DIRECTORY:-$TM_PROJECT_DIRECTORY}"
+project_dir="${TM_PROJECT_DIRECTORY:-$TM_DIRECTORY}"
 current_file="${TM_FILEPATH:-untitled}"
 current_text="${TM_SELECTED_TEXT:-${TM_CURRENT_LINE:-${TM_CURRENT_WORD:-Nothing selected}}}"
 
-build_dir="${TM_SPHINX_BUILD_DIR:-${current_dir}/_build}"
-project_name=`basename "$current_dir"`
+project_name=`basename "$project_dir"`
 
-rst2html="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2html.py"
-rst2xml="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2xml.py"
-rst2latex="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2latex.py"
-rst2newlatex="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2newlatex.py"
-rst2s5="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2s5.py"
+build_dir="${TM_SPHINX_BUILD_DIR:-$project_dir/_build}"
+conf_dir="${TM_SPHINX_CONF_DIR:-$project_dir}"
+conf_filename="${TM_SPHINX_CONF_FILENAME:-conf.py}"
+
+txmt_settings_file_name="${TM_SPHINX_DOC_SETTINGS_FILE_NAME:-.txmt_sphinxdoc_settings}"
+txmt_settings_file="${project_dir}/${txmt_settings_file_name}"
+
+preferred_browser="${TM_PREFERRED_BROWSER:-Safari}"
 
 if [[ -s "$TM_SPHINX_BUILD" ]]; then
     sphinx_build="$TM_SPHINX_BUILD"
@@ -42,10 +47,10 @@ else
     fi
 fi
 
-spqsdir=$(dirname "$TM_SPHINX_BUILD")
+sbdir=$(dirname "$TM_SPHINX_BUILD")
 
-if [[ -s "$spqsdir/sphinx-quickstart" ]]; then
-    sphinx_quickstart="$spqsdir/sphinx-quickstart"
+if [[ -s "$sbdir/sphinx-quickstart" ]]; then
+    sphinx_quickstart="$sbdir/sphinx-quickstart"
 else
     if [[ -s "${TM_SPHINX_DOCUTILS_DIR}/sphinx-quickstart" ]]; then
         sphinx_quickstart="${TM_SPHINX_DOCUTILS_DIR}/sphinx-quickstart"
@@ -54,9 +59,64 @@ else
     fi 
 fi
 
-sphinx_conf="${TM_SPHINX_CONF_DIR:.}"
+# NB: sphinx and docutils related variables will be adjusted once we have found 
+# the user's preferred and valid Python installation because paths to tools from 
+# Sphinx and docutils can be inferred when we know the path <python installation>/bin
+# for example. This adjustment only happens though, if more specific user shell vars
+# like TM_SPHINX_DOCUTILS_DIR are not set.
 
-preferred_browser="${TM_PREFERRED_BROWSER:-Safari}"
+# rst2html="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2html.py"
+# rst2xml="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2xml.py"
+# rst2latex="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2latex.py"
+# rst2newlatex="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2newlatex.py"
+# rst2s5="${TM_SPHINX_DOCUTILS_DIR}${TM_SPHINX_DOCUTILS_DIR:+/}rst2s5.py"
+
+if [[ -s "$sbdir/rst2html.py" ]]; then
+    rst2html="$sbdir/rst2html.py"
+else
+    if [[ -s "${TM_SPHINX_DOCUTILS_DIR}/rst2html.py" ]]; then
+        rst2html="${TM_SPHINX_DOCUTILS_DIR}/rst2html.py"
+    else
+        rst2html="rst2html.py"
+    fi 
+fi
+if [[ -s "$sbdir/rst2xml.py" ]]; then
+    rst2xml="$sbdir/rst2html.py"
+else
+    if [[ -s "${TM_SPHINX_DOCUTILS_DIR}/rst2xml.py" ]]; then
+        rst2xml="${TM_SPHINX_DOCUTILS_DIR}/rst2xml.py"
+    else
+        rst2xml="rst2xml.py"
+    fi 
+fi
+if [[ -s "$sbdir/rst2latex.py" ]]; then
+    rst2latex="$sbdir/rst2latex.py"
+else
+    if [[ -s "${TM_SPHINX_DOCUTILS_DIR}/rst2latex.py" ]]; then
+        rst2latex="${TM_SPHINX_DOCUTILS_DIR}/rst2latex.py"
+    else
+        rst2latex="rst2latex.py"
+    fi 
+fi
+if [[ -s "$sbdir/rst2newlatex.py" ]]; then
+    rst2newlatex="$sbdir/rst2newlatex.py"
+else
+    if [[ -s "${TM_SPHINX_DOCUTILS_DIR}/rst2newlatex.py" ]]; then
+        rst2newlatex="${TM_SPHINX_DOCUTILS_DIR}/rst2newlatex.py"
+    else
+        rst2newlatex="rst2newlatex.py"
+    fi 
+fi
+if [[ -s "$sbdir/rst2s5.py" ]]; then
+    rst2s5="$sbdir/rst2s5.py"
+else
+    if [[ -s "${TM_SPHINX_DOCUTILS_DIR}/rst2s5.py" ]]; then
+        rst2s5="${TM_SPHINX_DOCUTILS_DIR}/rst2s5.py"
+    else
+        rst2s5="rst2s5.py"
+    fi 
+fi
+
 
 python="${TM_PYTHON:-python}"
 ruby_="${TM_RUBY:-ruby}"
@@ -87,7 +147,7 @@ color_files="#555"
 # Note: functions should only be stored here when absolutely 
 # neccessary in terms of load order!
 
-function islink() {
+function islink () {
     if [[ -L "${1}" ]]; then
         echo 1
     else
@@ -95,20 +155,74 @@ function islink() {
     fi
 }
 
-function resolve_link() {
-    if [[ -L "${1}" ]]; then
-        curdir="`pwd`"
-        if [[ -d "${1}" ]]; then
-            cd "${1}"
-        else
-            cd `dirname "${1}"`
-            #echo "pwd = `pwd`"
+# function resolve_link() {
+#     # resolves a path given by $1 to its absolute path
+#     # returns $1 as-is if it isn't a symbolic link
+#     if [[ -L "${1}" ]]; then
+#         # curdir="`pwd`"
+#         # if [[ -d "${1}" ]]; then
+#         #     cd "${1}"
+#         # else
+#         #     cd `dirname "${1}"`
+#         # fi
+#         target=`stat -n -f '%Y' "${1}"`
+#         if [[ ! "$target" =~ "/" && "${1}" =~ "/" ]]; then
+#             parentdir=`dirname "$1"`
+#             target="$parentdir/$target"
+#         fi
+#         echo -n "$target"
+#         cd "$curdir"
+#     else
+#         echo "${1}"
+#     fi
+# }
+
+function resolve_link () {
+    # resolves a path given by $1 to its absolute path
+    # returns $1 as-is if it isn't a symbolic link
+    # return codes:
+    #   -1 - no resolving needed. file at "$1" isn't a symlink.
+    #    0 - resolving succeeded
+    #    1 - error: file at "$1" doesn't exist
+    #    2 - error while trying to resolve a relative path further
+    if [[ -L "$1" ]]; then
+        curdir=`pwd`
+        resolved=`stat -n -f '%Y' "${1}"`
+        #echo "resolved = $resolved"
+        if [[ ! "$resolved" =~ "/" && "$1" =~ "/" ]]; then
+            # if $resolved doesn't look like a path, but "$1" did,
+            # $resolved should be relative to `dirname $1`
+            parentdir=`dirname "$1"`
+            resolved="$parentdir/$resolved"
+        elif [[ "$resolved" =~ "../" || "$resolved" =~ "./" ]]; then
+            # resolve relative path result
+            # a relative path result should happen when 
+            # `dirname "$1"` != `dirname "$PWD"`
+            if [[ -d "$resolved" ]]; then
+                # if $resolved is a dir we can cd into
+                # that should suffice
+                cd "$resolved"
+            elif [[ "$1" =~ "/" ]]; then
+                # if $1 was given as absolute path to the symbolic link,
+                # then $resolved is relative to `dirname $1`
+                cd `dirname "$1"` && cd `dirname "$resolved"`
+            else
+                echo "E: can't resolve relative path ($resolved)"
+                return 2
+            fi
+            parentdir=`pwd`
+            name=`basename "$resolved"`
+            resolved="$parentdir/$name"
         fi
-        target=`stat -n -f '%Y' "${1}"`
-        echo "$target"
+        echo -n "$resolved"
         cd "$curdir"
+        return 0
+    elif [[ ! -s "$1" ]]; then
+        echo "E: file '$1' doesn't exist!"
+        return 1
     else
-        echo "${1}"
+        echo -n "$1"
+        return -1
     fi
 }
 
@@ -146,7 +260,7 @@ function python_version () {
     fi
 }
 
-function entitify_keyboard_shortcuts() {
+function entitify_keyboard_shortcuts () {
     # a function to replace constructs such as "alt+F1"
     # with the symbolic counterpart: ⌥F1. Works for "alt+"
     # "ctrl+" and "cmd+" or "command+" and case variations.
@@ -191,6 +305,78 @@ HTML
     fi
 }
 
+function strrepeat () {
+    # $1: string
+    # $2: times
+    for (( c=1; c<=$2; c++)); do 
+        echo -en "$1";
+    done
+}
+
+function strlen () {
+    echo "${#1}"
+}
+
+# dump all variables contained in a shell file to a tmp file
+# variables must have strict shell syntax, e.g. "var=value"
+# arg1: path to shell file containing the variables to dump
+# arg2: path to output file
+# options: 
+#   -v|--verbose echo variables as they are appended to outfile
+#
+function dump_variables () {
+    verbose=
+    while test $# -gt 2; do
+        case "$1" in
+            -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+            *) optarg= ;;
+        esac
+        case $1 in
+            -v|--verbose)
+                verbose=1
+                ;;
+            *)
+                echo "${usage}" 1>&2
+                exit 1
+                ;;
+        esac
+        shift
+    done
+    infile="$1"
+    outfile="$2"
+    #echo "infile=$infile"
+    #echo "outfile=$outfile"
+    #echo "\$@=$@"
+    #echo "verbose=$verbose"
+    if [[ ! -s "$infile" ]]; then
+        return 1
+    fi
+    result=`grep -o -E '[-_a-zA-Z0-9]+=' <<< cat "$infile"`
+    set_output="`set`"
+    echo "result=$result"
+    #echo "set_output=$set_output"
+    if [[ -e "$outfile" ]]; then
+        rm "$outfile"
+    fi
+    for i in "$result"; do
+        if [[ ${#i} > 2 ]]; then # ignore 1-letter variables
+            cur_variable=`echo "$i" | tr -d '='`
+            cur_variable_expanded="$cur_variable=$(eval echo $`echo $cur_variable`)"
+            if [[ verbose = 1 ]]; then
+                echo "$cur_variable_expanded"
+            fi
+            echo "$cur_variable_expanded" >> "$outfile"
+        fi 
+    done
+    return 0
+}
+
+function read_txmt_project_settings() {
+    if [[ -s "$txmt_settings_file" ]]; then
+        #echo "sourcing project settings file at $txmt_settings_file...<br>"
+        source "$txmt_settings_file"
+    fi
+}
 
 # --------------------------------------------------------------
 #                      Error Messages 
@@ -229,6 +415,8 @@ err_docutils_not_found_msg="To tell TextMate where to find valid docutils instal
 #                      Check Requirements 
 # ------------------------------------------------------------------
 
+# check required executables and adjust previous variable settings
+# when new, more correct info can be inferred.
 
 requires "$python" "$err_python_not_found_msg"
 
@@ -264,7 +452,7 @@ fi
 
 if [[ -n "$TM_PYTHON" && -L "$TM_PYTHON" ]]; then
     # case 1: TM_PYTHON is set and is a symbolic link
-    pythonbin=`abspath $(resolve_link "$python") "$python"`
+    pythonbin=`dirname $(resolve_link "$python")`
     if [[ ! -d "${TM_SPHINX_DOCUTILS_DIR}" && ! -s "$TM_SPHINX_BUILD" ]]; then
         # re-adjust inferred path to sphinx-build 
         # but only if the user hasn't set any shell 
@@ -335,3 +523,67 @@ requires "$ruby" "$err_ruby_not_found_msg"
 # compile all Python files 
 # (only re-compiles if mod dates of the source .py files are different from the corresponding .pyc files)
 #"$python" -c "import compileall; compileall.compile_dir(\"${TM_BUNDLE_SUPPORT}\", quiet=True)"
+
+# read per-project settings file
+
+#echo "conf_dir=$conf_dir<br>"
+#echo "build_dir=$build_dir<br>"
+
+read_txmt_project_settings
+
+# qualify paths - need to do this here since
+# the project settings file could have overwritten
+# the values set earlier
+
+if [[ "${conf_dir:0:1}" = "/" || "${conf_dir:0:1}" = "." ]]; then
+    # if conf_dir is absolute (or if it uses the default fall back value) 
+    # use it as-is
+    :
+else
+    # otherwise append conf_dir to current_dir
+    conf_dir="$project_dir/$conf_dir"
+fi
+
+if [[ "${build_dir:0:1}" = "/" ]]; then
+    # if build_dir is absolute use it as-is
+    :
+else
+    # otherwise append build_dir to current_dir
+    if [[ "`basename ${project_dir}`" != "${build_dir}" ]]; then
+        # Special case: if there is no TextMate project project_dir will be the current_dir
+        # in which case it could very well be that the current_dir already is the build_dir.
+        # In that case we don't want to append the build_dir again.
+        build_dir="$project_dir/$build_dir"
+    fi
+fi
+
+conf_dirname=`basename "$conf_dir"`
+build_dirname=`basename "$build_dir"`
+
+#echo "conf_dir=$conf_dir<br>"
+#echo "build_dir=$build_dir<br>"
+
+# dump variables and their values to a file in /tmp so that we can read those values in places
+# where going through the environment won't work, e.g. when transitioning from one command system
+# to another i.e. shell > python > ruby etc...
+#
+# IMPORTANT: this setting is not intended to be changed by an end user of SphinxDoc bundle.
+# It is used in other places throughout the bundle and is thus reserved for internal use only!
+#
+registry_tmp_file="/tmp/tm_sphinx_doc_registry.txt"
+export __tm_sphinx_doc_registry_tmp_file="$registry_tmp_file"
+
+registry_vars=(registry_tmp_file errors_tmp_file output_tmp_file output_tmp_file_html current_dir project_dir current_file project_name build_dir build_dirname conf_dir conf_dirname conf_filename txmt_settings_file_name txmt_settings_file preferred_browser sphinx_build sphinx_quickstart rst2html rst2xml rst2latex rst2newlatex rst2s5 python ruby color_infos color_warnings color_errors color_files err_help_hint err_python_modules_not_found err_python_not_found_msg err_ruby_not_found_msg err_sphinx_not_found_msg err_docutils_not_found_msg)
+
+if [[ -s "$registry_tmp_file" ]]; then
+    rm "$registry_tmp_file"
+fi
+echo "[Init]" >> "$registry_tmp_file"
+for i in ${registry_vars[@]}; do
+    var_name="$i"
+    var_value="$(eval echo \$`echo $var_name`)"
+    echo "$var_name=$var_value" >> "$registry_tmp_file"
+done
+
+#echo "$important_variables_registry"
+#echo dump_variables -v "$0" "$registry_tmp_file"`

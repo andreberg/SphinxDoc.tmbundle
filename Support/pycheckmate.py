@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# pylint: disable-msg=E0611
 #
 # PyCheckMate, a PyChecker output beautifier for TextMate.
 # Copyright (c) Jay Soffian, 2005. <jay at soffian dot org>
@@ -32,9 +33,9 @@ import traceback
 from cgi import escape
 from select import select
 if ("%x" % sys.hexversion)[0] == '3':
-    from urllib.parse import quote
+    from urllib.parse import quote # IGNORE:F0401 @UnresolvedImport @UnusedImport
 else:
-    from urllib import quote
+    from urllib import quote # @Reimport
 
 ###
 ### Constants

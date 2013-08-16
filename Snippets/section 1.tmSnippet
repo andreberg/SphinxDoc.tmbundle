@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>${1:subsection name}
+	<string>${1:section}
 ${1/(.)|\s/(?1:=:=)/g}
 $0</string>
 	<key>name</key>
-	<string>section 1</string>
+	<string>section</string>
 	<key>scope</key>
 	<string>text.restructuredtext.sphinx.doc</string>
 	<key>tabTrigger</key>

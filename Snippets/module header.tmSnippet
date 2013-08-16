@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>.. module:: ${TM_FILENAME/(.*)\.(.*)/$1/}
+   :synopsis: ${2:SYNOPSIS}
+.. moduleauthor:: ${TM_USER_DISPLAY_NAME:${USER:USERNAME}} &lt;${TM_USER_EMAIL:EMAIL}&gt;
+.. sectionauthor:: ${TM_USER_DISPLAY_NAME:${USER:USERNAME}} &lt;${TM_USER_EMAIL:EMAIL}&gt;
+   
+
+   ${3:DESCRIPTION}
+
+   It defines the following ${4:DEFINITIONS}</string>
+	<key>name</key>
+	<string>module</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc</string>
+	<key>tabTrigger</key>
+	<string>mod</string>
+	<key>uuid</key>
+	<string>BD0356D1-67B1-4929-9F3B-8EEF73A317D2</string>
+</dict>
+</plist>

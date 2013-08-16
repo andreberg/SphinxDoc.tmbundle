@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Symbol List: Templates - IDs</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc.template meta.toc-list.id.html</string>
+	<key>settings</key>
+	<dict>
+		<key>symbolTransformation</key>
+		<string>s/^/ID: /</string>
+	</dict>
+	<key>uuid</key>
+	<string>9181A8FD-81DC-48BC-BB37-4C8EC4C27285</string>
+</dict>
+</plist>

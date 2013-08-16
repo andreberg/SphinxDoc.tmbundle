@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+##!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
 #  open_counterpart.py
@@ -17,7 +17,9 @@
 #  versa. 
 #  The correct file extension for a source file is
 #  inferred from a setting named "source_suffix"
-#  from the config file (conf.py).
+#  from the config file (conf.py) but defaults to
+#  the Sphinx default of .rst if this setting isn't
+#  found.
 #
 
 import os
@@ -26,7 +28,7 @@ import sys
 DEBUG = 0
 
 if DEBUG:
-    tmbundlesup = "/Users/andre/Library/Application Support/TextMate/Bundles/Sphinx Doc.tmbundle/Support"
+    tmbundlesup = os.path.expandvars("$HOME") + "/Library/Application Support/TextMate/Bundles/SphinxDoc.tmbundle/Support"
 else:
     tmbundlesup = os.environ['TM_BUNDLE_SUPPORT']
     
@@ -34,54 +36,83 @@ sys.path.append(tmbundlesup)
 from sphinxdoc import SphinxDocUtils as util
 
 if DEBUG:
-    tmdir = "/Users/andre/Documents/Aptana Studio 2.0/Workspaces/Python/File Sequence Checker/doc/sphinx"
+    # current_dir= "/Users/andre/Documents/TextMate/SampledocTutorial/sampledoc"
+    # project_dir = "/Users/andre/Documents/TextMate/SampledocTutorial"
+    # current_dir= "/Users/andre/source/sphinx/hg/sphinx/doc/ext"
+    # project_dir = "/Users/andre/source/sphinx/hg/sphinx"
+    #current_dir= "/Users/andre/test/sphinxtest"
+    #project_dir = "/Users/andre/test/sphinxtest"
+    #tmpython = "/usr/local/bin/python2.7"
+    #filename = "ifconfig.rst"
+    #build_dir = "_build/html"
+    current_dir= "/Users/andre/source/OpenCV-2.4.2"
+    project_dir = "/Users/andre/source/OpenCV-2.4.2"
     tmpython = "/usr/local/bin/python2.7"
-    filename = "checkfileseq.rst"
-    buildirname = "_build"
+    filename = "index.rst"
+    build_dir = "_build"
+    filename, fileext = os.path.splitext(filename)
 else:
-    tmdir = os.environ.get('TM_PROJECT_DIRECTORY', os.environ.get('TM_DIRECTORY', None))
-    tmpython = os.environ.get('TM_PYTHON', 'python')
-    buildirname = os.environ.get('TM_SPHINX_BUILD_DIR_NAME', '_build')
+    current_dir= util.read_value_from_registry('current_dir')   # current_dir"${TM_DIRECTORY:-$TM_PROJECT_DIRECTORY}" parent dir of active file
+    project_dir = util.read_value_from_registry('project_dir')   # project_dir="${TM_PROJECT_DIRECTORY:-$TM_DIRECTORY}" selected dir in project drawer (if tmproject)
+    tmpython = util.read_value_from_registry('python')
+    build_dir = util.read_value_from_registry('build_dir')       # build_dir="${TM_SPHINX_BUILD_DIR:-_build/html}"
+    #print("current_dir= %s" % (current_dir)
+    #print("project_dir = %s" % (project_dir))
+    #print("tmpython = %s" % (tmpython))
+    #print("build_dir = %s" % (build_dir))
+    
     if len(sys.argv) > 1:
-        currentfile = sys.argv[1]
+        filename, fileext = os.path.splitext(sys.argv[1])
     else:
         sys.exit(1)
 
-filename, fileext = os.path.splitext(currentfile)
-srcsuffix = util.get_conf_value("source_suffix", tmdir)
+config_filepath = util.find_config_file(base_dirs=[current_dir, project_dir])
+srcsuffix = util.get_conf_value("source_suffix", config_filepath, default=".rst")
 
+# sanitize
+if current_dir[-1] == os.path.sep:
+    current_dir= current_dir[0:-1]
+if project_dir[-1] == os.path.sep:
+    project_dir = project_dir[0:-1]
+if tmpython[-1] == os.path.sep:
+    tmpython = tmpython[0:-1]
+if build_dir[-1] == os.path.sep:
+    build_dir = build_dir[0:-1]
+
+# makes the operation reversible, e.g.
+# go from source to counterpart and back again
 if fileext == srcsuffix:
-    targetext = ".html"
-    filedir = tmdir + os.path.sep + buildirname
+    target_ext = ".html"
+    target_filetype = "htmlfile"
+    (build_dir, searched_dirs) = util.find_dir(build_dir, [current_dir, project_dir])
+    if build_dir is None:
+        source_dirs = [project_dir] # fall back to project dir if the source dir wasn't found
+    else:
+        source_dirs = [build_dir, project_dir]
 else:
-    targetext = srcsuffix
-    filedir = tmdir
+    target_ext = srcsuffix
+    target_filetype = "sourcefile"
+    source_dirs = [current_dir, project_dir]
 
-targetfilename = "%s%s" % (os.path.basename(filename), targetext)
+target_filename = "%s%s" % (os.path.basename(filename), target_ext)
 
 if DEBUG:
-    print "filename = %s, fileext = %s" % (filename, fileext)
-    print "filedir = %s" % (filedir)
-    print "targetfilename = %s" % targetfilename
+    print("filename = %s, fileext = %s" % (filename, fileext))
+    print("current_dir= %s" % (current_dir))
+    print("source_dirs = %s" % (source_dirs))
+    print("project_dir = %s" % (project_dir))
+    print("build_dir = %s" % build_dir)
+    print("tmpython = %s" % tmpython)
+    print("targetfilename = %s" % target_filename)
 
-found_path = None
-exclude_files = ['.DS_Store', '.Trash', '.Trashes', '.fseventsd', '.Spotlight-V100', '.hotfiles.btree']
+found = None
 
-for root, dirs, files in os.walk(filedir):
-    if DEBUG: print("root = %s, dirs = %s" % (root, dirs))
-    for f in files:
-        if f in exclude_files:
-            if DEBUG: print("excluding '%s'..." % f)
-            continue
-        (filename, fileext) = os.path.splitext(f)
-        if DEBUG: print "f == %s" % f
-        if f == targetfilename:
-            found_path = os.path.join(root, targetfilename)
-            break
-    if found_path:
-        break
+(found, searched) = util.find_file(target_filename, source_dirs)
 
-if found_path:
-    os.system('open -a TextMate "%s"' % found_path)
+if found:
+    util.open(found, app='TextMate')
 else:
-    print("nothing found for '%s'" % (os.path.basename(targetfilename)))
+    infomsg = util.make_locations_searched_message(target_filename, searched, relative=True, curdir=current_dir)
+    print(infomsg)
+    
+    

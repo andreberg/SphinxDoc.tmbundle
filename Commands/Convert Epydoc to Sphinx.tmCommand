@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+class EpydocToSphinxConverter
+
+  def at_param_to_col_param(s)
+    s.gsub(/@(.+?)(\s+?)(.+?):/, ":\\1\\2\\3:")
+  end
+
+  def at_field_to_col_field(s)
+    s.gsub(/@(.+?):/, ":\\1:")
+  end
+
+  def remove_underline(s)
+    s.gsub(/U\{(.+)\}/, "\\1")
+  end
+
+  def convert_no_colon_field(s)
+    s.gsub(/@(return|returns|deffield)(?!:)/, ":\\1:")
+  end
+
+  def convert_code(s)
+    s.gsub(/C\{(.+?)\}/, "``\\1``")
+  end
+
+  def convert_bold(s)
+    s.gsub(/B\{(.+?)\}/, "**\\1**")
+  end
+
+  def convert_italic(s)
+    s.gsub(/I\{(.+?)\}/, "*\\1*")
+  end
+
+  def convert_link(s)
+    s.gsub(/L\{(.+?)\}/, "`\\1 &lt;\\1&gt;`_")
+  end
+
+  def fix_decorator(s)
+    s.gsub(/:([a-zA-Z0-9_-]+?[\n\r]\s*def)/, "@\\1")
+  end
+
+  def convert(text)
+    text = convert_no_colon_field(text)
+    text = at_param_to_col_param(text)
+    text = at_field_to_col_field(text)
+    text = fix_decorator(text)
+    text = remove_underline(text)    
+    text = convert_link(text)
+    text = convert_bold(text)
+    text = convert_italic(text)
+    text = convert_code(text)
+  end
+end
+
+lines = STDIN.read
+etos_converter = EpydocToSphinxConverter.new
+lines = etos_converter.convert(lines)
+
+print lines</string>
+	<key>fallbackInput</key>
+	<string>none</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>~M</string>
+	<key>name</key>
+	<string>Convert Epydoc to Sphinx</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>text.restructuredtext.sphinx.doc, source.python</string>
+	<key>uuid</key>
+	<string>0015D8DC-EDEF-47C1-96FD-3ED96840AEB0</string>
+</dict>
+</plist>

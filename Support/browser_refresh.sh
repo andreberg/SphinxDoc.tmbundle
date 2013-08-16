@@ -9,7 +9,7 @@ function browser_refresh() {
         activate=""
     fi
     
-    which_browser="${TM_PREFERRED_BROWSER}"
+    which_browser="${preferred_browser}"
     
     #echo "which_browser = ${which_browser}"
 

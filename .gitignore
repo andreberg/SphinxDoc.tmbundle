@@ -3,6 +3,8 @@
 *~
 *.[oa]
 *.bak
+*.zip
+backup/
 
 # Mac OS X stuff
 
@@ -37,20 +39,19 @@ xcuserdata/
 *.tm_build_errors
 *.tmproj
 
-# Aptana stuff
+# Eclipse/Pydev stuff
 .project
 .pydevproject
 .settings
 .coverage
+unused__*
+profile_stats.txt
+*_profile.txt
+*-profile.pstats
+*-profile.pstats.txt
 
 # Python Stuff
 
 *.pyc
+__pycache__/
 
-# Generic Stuff
-
-backup/
-*.bak
-unused__*
-profile_stats.txt
-*_profile.txt
