@@ -32,6 +32,7 @@
 			<string>copyright</string>
 			<string>version</string>
 			<string>release</string>
+			<string>today</string>
 			<string>today_fmt</string>
 			<string>highlight_language</string>
 			<string>pygments_style</string>
@@ -119,6 +120,42 @@
 			<string>linkcheck_ignore</string>
 			<string>linkcheck_timeout</string>
 			<string>linkcheck_workers</string>
+			<string>autoclass_content</string>
+			<string>autodoc_member_order</string>
+			<string>autodoc_default_flags</string>
+			<string>autodoc_docstring_signature</string>
+			<string>autosummary_generate</string>
+			<string>coverage_ignore_modules</string>
+			<string>coverage_ignore_functions</string>
+			<string>coverage_ignore_classes</string>
+			<string>coverage_c_path</string>
+			<string>coverage_c_regexes</string>
+			<string>coverage_ignore_c_items</string>
+			<string>coverage_write_headline</string>
+			<string>coverage_skip_undoc_in_source</string>
+			<string>doctest_path</string>
+			<string>doctest_global_setup</string>
+			<string>doctest_global_cleanup</string>
+			<string>doctest_test_doctest_blocks</string>
+			<string>extlinks</string>
+			<string>graphviz_dot</string>
+			<string>graphviz_dot_args</string>
+			<string>graphviz_output_format</string>
+			<string>inheritance_graph_attrs</string>
+			<string>inheritance_node_attrs</string>
+			<string>inheritance_edge_attrs</string>
+			<string>intersphinx_mapping</string>
+			<string>intersphinx_cache_limit</string>
+			<string>pngmath_latex</string>
+			<string>pngmath_dvipng</string>
+			<string>pngmath_latex_args</string>
+			<string>pngmath_latex_preamble</string>
+			<string>pngmath_dvipng_args</string>
+			<string>pngmath_use_preview</string>
+			<string>pngmath_add_tooltips</string>
+			<string>mathjax_path</string>
+			<string>jsmath_path</string>
+			<string>todo_include_todos</string>
 		</array>
 	</dict>
 	<key>uuid</key>

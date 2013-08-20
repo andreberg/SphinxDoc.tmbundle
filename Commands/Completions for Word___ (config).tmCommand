@@ -36,6 +36,7 @@ sphinx_confval = [
    "copyright",                        # A copyright statement in the style '2008, Author Name'
    "version",                          # The major project version, used as the replacement for |version|
    "release",                          # The full project version, used as the replacement for |release| and e.g. in the HTML templates
+   "today",                            # see today_fmt
    "today_fmt",                        # These values determine how to format the current date, used as the replacement for |today|
    "highlight_language",               # The default language to highlight source code in
    "pygments_style",                   # The style name to use for Pygments highlighting of source code.  The default style is selected by the theme for HTML output, and 'sphinx' otherwise.  Changed in version 0
@@ -123,6 +124,42 @@ sphinx_confval = [
    "linkcheck_ignore",                 # A list of regular expressions that match URIs that should not be checked when doing a linkcheck build
    "linkcheck_timeout",                # A timeout value, in seconds, for the linkcheck builder
    "linkcheck_workers",                # The number of worker threads to use when checking links
+   "autoclass_content",                # This value selects what content will be inserted into the main body of an autoclass directive.  The possible values are: "class" Only the class’ docstring is inserted
+   "autodoc_member_order",             # This value selects if automatically documented members are sorted alphabetical (value 'alphabetical'), by member type (value 'groupwise') or by source order (value 'bysource')
+   "autodoc_default_flags",            # This value is a list of autodoc directive flags that should be automatically applied to all autodoc directives
+   "autodoc_docstring_signature",      # Functions imported from C modules cannot be introspected, and therefore the signature for such functions cannot be automatically determined
+   "autosummary_generate",             # Boolean indicating whether to scan all found documents for autosummary directives, and to generate stub pages for each
+   "coverage_ignore_modules",          # no description
+   "coverage_ignore_functions",        # no description
+   "coverage_ignore_classes",          # no description
+   "coverage_c_path",                  # no description
+   "coverage_c_regexes",               # no description
+   "coverage_ignore_c_items",          # no description
+   "coverage_write_headline",          # Set to False to not write headlines
+   "coverage_skip_undoc_in_source",    # Skip objects that are not documented in the source with a docstring. False by default
+   "doctest_path",                     # A list of directories that will be added to sys
+   "doctest_global_setup",             # Python code that is treated like it were put in a testsetup directive for every file that is tested, and for every group
+   "doctest_global_cleanup",           # Python code that is treated like it were put in a testcleanup directive for every file that is tested, and for every group
+   "doctest_test_doctest_blocks",      # If this is a nonempty string (the default is 'default'), standard reST doctest blocks will be tested too
+   "extlinks",                         # This config value must be a dictionary of external sites, mapping unique short alias names to a base URL and a prefix
+   "graphviz_dot",                     # The command name with which to invoke dot
+   "graphviz_dot_args",                # Additional command-line arguments to give to dot, as a list
+   "graphviz_output_format",           # The output format for Graphviz when building HTML files
+   "inheritance_graph_attrs",          # A dictionary of graphviz graph attributes for inheritance diagrams
+   "inheritance_node_attrs",           # A dictionary of graphviz node attributes for inheritance diagrams
+   "inheritance_edge_attrs",           # A dictionary of graphviz edge attributes for inheritance diagrams
+   "intersphinx_mapping",              # This config value contains the locations and names of other projects that should be linked to in this documentation
+   "intersphinx_cache_limit",          # The maximum number of days to cache remote inventories
+   "pngmath_latex",                    # The command name with which to invoke LaTeX
+   "pngmath_dvipng",                   # The command name with which to invoke dvipng.  The default is 'dvipng'; you may need to set this to a full path if dvipng is not in the executable search path
+   "pngmath_latex_args",               # Additional arguments to give to latex, as a list
+   "pngmath_latex_preamble",           # Additional LaTeX code to put into the preamble of the short LaTeX files that are used to translate the math snippets
+   "pngmath_dvipng_args",              # Additional arguments to give to dvipng, as a list
+   "pngmath_use_preview",              # dvipng has the ability to determine the “depth” of the rendered text: for example, when typesetting a fraction inline, the baseline of surrounding text should not be flush with the bottom of the image, rather the image should extend a bit below the baseline.  This is what TeX calls “depth”
+   "pngmath_add_tooltips",             # Default: true.  If false, do not add the LaTeX code as an “alt” attribute for math images
+   "mathjax_path",                     # The path to the JavaScript file to include in the HTML files in order to load MathJax
+   "jsmath_path",                      # The path to the JavaScript file to include in the HTML files in order to load JSMath
+   "todo_include_todos",               # If this is True, todo and todolist produce output, else they produce nothing.  The default is False. 
 ]
 
 

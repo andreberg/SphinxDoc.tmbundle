@@ -14,128 +14,176 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
 #TextMate::UI.complete(choices, :initial_filter =&gt; ENV['TM_CURRENT_WORD'], :extra_chars =&gt; ':')
 
 sphinx_data = [
-   'reldelim1',         # The delimiter for the items on the left side of the related bar
-   'reldelim2',         # The delimiter for the items on the right side of the related bar
-   'script_files',      # Add additional script files here, like this: {% set script_files = script_files + ["_static/myscript
-   'css_files',         # Similar to script_files, for CSS files
-   'builder',           # The name of the builder (e.g. html or htmlhelp)
-   'copyright',         # The value of copyright
-   'docstitle',         # The title of the documentation (the value of html_title)
-   'embedded',          # True if the built HTML is meant to be embedded in some viewing application that handles navigation, not the web browser, such as for HTML help or Qt help formats
-   'favicon',           # The path to the HTML favicon in the static path, or ''
-   'file_suffix',       # The value of the builder’s out_suffix attribute, i
-   'has_source',        # True if the reST document sources are copied (if html_copy_source is true)
-   'last_updated',      # The build date. 
-   'logo',              # The path to the HTML logo image in the static path, or ''
-   'master_doc',        # The value of master_doc, for usage with pathto()
-   'next',              # The next document for the navigation
-   'pagename',          # The “page name” of the current file, i
-   'parents',           # A list of parent documents for navigation, structured like the next item
-   'prev',              # Like next, but for the previous page. 
-   'project',           # The value of project
-   'release',           # The value of release. 
-   'rellinks',          # A list of links to put at the left side of the relbar, next to “next” and “prev”
-   'shorttitle',        # The value of html_short_title. 
-   'show_source',       # True if html_show_sourcelink is true. 
-   'sphinx_version',    # The version of Sphinx used to build
-   'style',             # The name of the main stylesheet, as given by the theme or html_style. 
-   'title',             # The title of the current document, as used in the &lt;title&gt; tag. 
-   'use_opensearch',    # The value of html_use_opensearch
-   'version',           # The value of version
-   'meta',              # Document metadata (a dictionary), see File-wide metadata
-   'sourcename',        # The name of the copied source file for the current document
-   'toc',               # The local table of contents for the current page, rendered as HTML bullet lists
-   'toctree',           # A callable yielding the global TOC tree containing the current page, rendered as HTML bullet lists
+   "name",              # Name of the documented object, excluding the module and class parts
+   "objname",           # Name of the documented object, excluding the module parts
+   "fullname",          # Full name of the documented object, including module and class parts
+   "module",            # Name of the module the documented object belongs to
+   "class",             # Name of the class the documented object belongs to
+   "underline",         # A string containing len(full_name) * '='
+   "members",           # List containing names of all members of the module or class
+   "functions",         # List containing names of “public” functions in the module.  Here, “public” here means that the name does not start with an underscore. Only available for modules
+   "classes",           # List containing names of “public” classes in the module.  Only available for modules
+   "exceptions",        # List containing names of “public” exceptions in the module.  Only available for modules
+   "methods",           # List containing names of “public” methods in the class
+   "attributes",        # List containing names of “public” attributes in the class
+   "reldelim1",         # The delimiter for the items on the left side of the related bar
+   "reldelim2",         # The delimiter for the items on the right side of the related bar
+   "script_files",      # Add additional script files here, like this: {% set script_files = script_files + ["_static/myscript
+   "css_files",         # Similar to script_files, for CSS files
+   "builder",           # The name of the builder (e.g. html or htmlhelp)
+   "copyright",         # The value of copyright
+   "docstitle",         # The title of the documentation (the value of html_title)
+   "embedded",          # True if the built HTML is meant to be embedded in some viewing application that handles navigation, not the web browser, such as for HTML help or Qt help formats
+   "favicon",           # The path to the HTML favicon in the static path, or ''
+   "file_suffix",       # The value of the builder’s out_suffix attribute, i
+   "has_source",        # True if the reST document sources are copied (if html_copy_source is true)
+   "last_updated",      # The build date. 
+   "logo",              # The path to the HTML logo image in the static path, or ''
+   "master_doc",        # The value of master_doc, for usage with pathto()
+   "next",              # The next document for the navigation
+   "pagename",          # The “page name” of the current file, i
+   "parents",           # A list of parent documents for navigation, structured like the next item
+   "prev",              # Like next, but for the previous page. 
+   "project",           # The value of project
+   "release",           # The value of release. 
+   "rellinks",          # A list of links to put at the left side of the relbar, next to “next” and “prev”
+   "shorttitle",        # The value of html_short_title. 
+   "show_source",       # True if html_show_sourcelink is true. 
+   "sphinx_version",    # The version of Sphinx used to build
+   "style",             # The name of the main stylesheet, as given by the theme or html_style. 
+   "title",             # The title of the current document, as used in the &lt;title&gt; tag. 
+   "use_opensearch",    # The value of html_use_opensearch
+   "version",           # The value of version
+   "meta",              # Document metadata (a dictionary), see File-wide metadata
+   "sourcename",        # The name of the copied source file for the current document
+   "toc",               # The local table of contents for the current page, rendered as HTML bullet lists
+   "toctree",           # A callable yielding the global TOC tree containing the current page, rendered as HTML bullet lists
 ]
 
 sphinx_directives = [
-   'default-domain',     # Select a new default domain
-   'module',             # This directive marks the beginning of the description of a module (or package submodule, in which case the name should be fully qualified, including the package name)
-   'currentmodule',      # This directive tells Sphinx that the classes, functions etc. documented from here are in the given module (like py:module), but it will not create index entries, an entry in the Global Module Index, or a link target for py:mod
-   'data',               # Describes global data in a module, including both variables and values used as “defined constants
-   'exception',          # Describes an exception class
-   'function',           # Describes a module-level function
-   'class',              # Describes a class
-   'attribute',          # Describes an object data attribute.  The description should include information about the type of the data to be expected and whether it may be changed directly
-   'method',             # Describes an object method
-   'staticmethod',       # Like py:method, but indicates that the method is a static method
-   'classmethod',        # Like py:method, but indicates that the method is a class method
-   'decorator',          # Describes a decorator function
-   'decoratormethod',    # Same as py:decorator, but for decorators that are methods
-   'function',           # Describes a C function
-   'member',             # Describes a C struct member
-   'macro',              # Describes a “simple” C macro
-   'type',               # Describes a C type (whether defined by a typedef or struct)
-   'var',                # Describes a global C variable.  The signature should include the type, such as: 
-   'type',               # Describe a C++ object
-   'namespace',          # Select the current C++ namespace for the following objects
-   'option',             # Describes a command line option or switch
-   'envvar',             # Describes an environment variable that the documented code or program uses or defines
-   'program',            # Like py:currentmodule, this directive produces no output
-   'object',             # This directive produces the same formatting as the specific ones provided by domains, but does not create index entries or cross-referencing targets
-   'function',           # Describes a JavaScript function or method
-   'class',              # Describes a constructor that creates an object
-   'data',               # Describes a global variable or constant
-   'attribute',          # Describes the attribute name of object
-   'directive',          # Describes a reST directive.  The name can be a single directive name or actual directive syntax (
-   'role',               # Describes a reST role.  For example: 
-   'toctree',            # This directive inserts a “TOC tree” at the current location, using the individual TOCs (including “sub-TOC trees”) of the documents given in the directive body
-   'note',               # An especially important bit of information about an API that a user should be aware of when using whatever bit of API the note pertains to
-   'warning',            # An important bit of information about an API that a user should be very aware of when using whatever bit of API the warning pertains to
-   'versionadded',       # This directive documents the version of the project which added the described feature to the library or C API
-   'versionchanged',     # Similar to versionadded, but describes when and what changed in the named feature in some way (new parameters, changed side effects, etc.)
-   'deprecated',         # Similar to versionchanged, but describes when the feature was deprecated
-   'seealso',            # Many sections include a list of references to module documentation or external documents
-   'rubric',             # This directive creates a paragraph heading that is not used to create a table of contents node.  Note If the title of the rubric is “Footnotes” (or the selected language’s equivalent), this rubric is ignored by the LaTeX writer, since it is assumed to only contain footnote definitions and therefore would create an empty heading.  
-   'centered',           # This directive creates a centered boldfaced line of text
-   'hlist',              # This directive must contain a bullet list
-   'glossary',           # This directive must contain a reST definition-list-like markup with terms and definitions
-   'productionlist',     # This directive is used to enclose a group of productions
-   'literalinclude',     # Longer displays of verbatim text may be included by storing the example text in an external file containing only plain text
+   "default-domain",         # Select a new default domain
+   "module",                 # This directive marks the beginning of the description of a module (or package submodule, in which case the name should be fully qualified, including the package name)
+   "currentmodule",          # This directive tells Sphinx that the classes, functions etc. documented from here are in the given module (like py:module), but it will not create index entries, an entry in the Global Module Index, or a link target for py:mod
+   "data",                   # Describes global data in a module, including both variables and values used as “defined constants
+   "exception",              # Describes an exception class
+   "function",               # Describes a module-level function
+   "class",                  # Describes a class
+   "attribute",              # Describes an object data attribute.  The description should include information about the type of the data to be expected and whether it may be changed directly
+   "method",                 # Describes an object method
+   "staticmethod",           # Like py:method, but indicates that the method is a static method
+   "classmethod",            # Like py:method, but indicates that the method is a class method
+   "decorator",              # see 
+   "decorator",              # Describes a decorator function
+   "decoratormethod",        # see 
+   "decoratormethod",        # Same as py:decorator, but for decorators that are methods
+   "function",               # Describes a C function
+   "member",                 # Describes a C struct member
+   "macro",                  # Describes a “simple” C macro
+   "type",                   # Describes a C type (whether defined by a typedef or struct)
+   "var",                    # Describes a global C variable.  The signature should include the type, such as: 
+   "class",                  # see 
+   "function",               # see 
+   "member",                 # see 
+   "type",                   # Describe a C++ object
+   "namespace",              # Select the current C++ namespace for the following objects
+   "option",                 # Describes a command line option or switch
+   "envvar",                 # Describes an environment variable that the documented code or program uses or defines
+   "program",                # Like py:currentmodule, this directive produces no output
+   "describe",               # see 
+   "object",                 # This directive produces the same formatting as the specific ones provided by domains, but does not create index entries or cross-referencing targets
+   "function",               # Describes a JavaScript function or method
+   "class",                  # Describes a constructor that creates an object
+   "data",                   # Describes a global variable or constant
+   "attribute",              # Describes the attribute name of object
+   "directive",              # Describes a reST directive.  The name can be a single directive name or actual directive syntax (
+   "role",                   # Describes a reST role.  For example: 
+   "toctree",                # This directive inserts a “TOC tree” at the current location, using the individual TOCs (including “sub-TOC trees”) of the documents given in the directive body
+   "note",                   # An especially important bit of information about an API that a user should be aware of when using whatever bit of API the note pertains to
+   "warning",                # An important bit of information about an API that a user should be very aware of when using whatever bit of API the warning pertains to
+   "versionadded",           # This directive documents the version of the project which added the described feature to the library or C API
+   "versionchanged",         # Similar to versionadded, but describes when and what changed in the named feature in some way (new parameters, changed side effects, etc.)
+   "deprecated",             # Similar to versionchanged, but describes when the feature was deprecated
+   "seealso",                # Many sections include a list of references to module documentation or external documents
+   "rubric",                 # This directive creates a paragraph heading that is not used to create a table of contents node.  Note If the title of the rubric is “Footnotes” (or the selected language’s equivalent), this rubric is ignored by the LaTeX writer, since it is assumed to only contain footnote definitions and therefore would create an empty heading.  
+   "centered",               # This directive creates a centered boldfaced line of text
+   "hlist",                  # This directive must contain a bullet list
+   "glossary",               # This directive must contain a reST definition-list-like markup with terms and definitions
+   "productionlist",         # This directive is used to enclose a group of productions
+   "literalinclude",         # Longer displays of verbatim text may be included by storing the example text in an external file containing only plain text
+   "automodule",             # see 
+   "autoclass",              # see 
+   "autoexception",          # Document a module, class or exception
+   "autofunction",           # see 
+   "autodata",               # see 
+   "automethod",             # see 
+   "autoattribute",          # These work exactly like autoclass etc., but do not offer the options used for automatic member documentation
+   "autosummary",            # Insert a table that contains links to documented items, and a short summary blurb (the first sentence of the docstring) for each of them
+   "testsetup",              # A setup code block
+   "testcleanup",            # A cleanup code block
+   "doctest",                # A doctest-style code block
+   "testcode",               # A code block for a code-output-style test
+   "testoutput",             # The corresponding output, or the exception message, for the last testcode block
+   "graphviz",               # Directive to embed graphviz code.  The input code for dot is given as the content
+   "graph",                  # Directive for embedding a single undirected graph
+   "digraph",                # Directive for embedding a single directed graph
+   "ifconfig",               # Include content of the directive only if the Python expression given as an argument is True, evaluated in the namespace of the project’s configuration (that is, all registered variables from conf
+   "inheritance-diagram",    # This directive has one or more arguments, each giving a module or class name.  Class names can be unqualified; in that case they are taken to exist in the currently described module (see py:module)
+   "math",                   # Directive for displayed math (math that takes the whole line for itself)
+   "todo",                   # Use this directive like, for example, note. It will only show up in the output if todo_include_todos is true. 
+   "todolist",               # This directive is replaced by a list of all todo directives in the whole documentation, if todo_include_todos is true. 
 ]
 
 sphinx_role = [
-   'mod',              # Reference a module; a dotted name may be used
-   'func',             # Reference a Python function; dotted names may be used
-   'data',             # Reference a module-level variable. 
-   'const',            # Reference a “defined” constant
-   'class',            # Reference a class; a dotted name may be used
-   'meth',             # Reference a method of an object
-   'attr',             # Reference a data attribute of an object
-   'exc',              # Reference an exception
-   'obj',              # Reference an object of unspecified type.  Useful e.g. as the default_role.  New in version 0
-   'data',             # Reference a C-language variable. 
-   'func',             # Reference a C-language function
-   'macro',            # Reference a “simple” C macro, as defined above. 
-   'type',             # Reference a C-language type. 
-   'type',             # Reference a C++ object
-   'attr',             # no description
-   'role',             # no description
-   'ref',              # To support cross-referencing to arbitrary locations in any document, the standard reST labels are used
-   'doc',              # Link to the specified document; the document name can be specified in absolute or relative fashion
-   'download',         # This role lets you link to files within your source tree that are not reST documents that can be viewed, but files that can be downloaded
-   'envvar',           # An environment variable.  Index entries are generated
-   'token',            # The name of a grammar token (used to create links between productionlist directives)
-   'keyword',          # The name of a keyword in Python
-   'option',           # A command-line option to an executable program
-   'term',             # Reference to a term in the glossary
-   'abbr',             # An abbreviation
-   'command',          # The name of an OS-level command, such as rm
-   'dfn',              # Mark the defining instance of a term in the text
-   'file',             # The name of a file or directory
-   'guilabel',         # Labels presented as part of an interactive user interface should be marked using guilabel
-   'kbd',              # Mark a sequence of keystrokes
-   'mailheader',       # The name of an RFC 822-style mail header
-   'makevar',          # The name of a make variable. 
-   'manpage',          # A reference to a Unix manual page including the section, e.g. :manpage:`ls(1)`
-   'menuselection',    # Menu selections should be marked using the menuselection role.  This is used to mark a complete sequence of menu selections, including selecting submenus and choosing a specific operation, or any subsequence of such a sequence.  The names of individual selections should be separated by --&gt;
-   'mimetype',         # The name of a MIME type, or a component of a MIME type (the major or minor portion, taken alone)
-   'newsgroup',        # The name of a Usenet newsgroup
-   'program',          # The name of an executable program
-   'regexp',           # A regular expression
-   'samp',             # A piece of literal text, such as code.  Within the contents, you can use curly braces to indicate a “variable” part, as in file.  For example, in :samp:`print 1+{variable}`, the part variable would be emphasized
-   'pep',              # A reference to a Python Enhancement Proposal
-   'rfc',              # A reference to an Internet Request for Comments
+   "mod",              # Reference a module; a dotted name may be used
+   "func",             # Reference a Python function; dotted names may be used
+   "data",             # Reference a module-level variable. 
+   "const",            # Reference a “defined” constant
+   "class",            # Reference a class; a dotted name may be used
+   "meth",             # Reference a method of an object
+   "attr",             # Reference a data attribute of an object
+   "exc",              # Reference an exception
+   "obj",              # Reference an object of unspecified type.  Useful e.g. as the default_role.  New in version 0
+   "data",             # Reference a C-language variable. 
+   "func",             # Reference a C-language function
+   "macro",            # Reference a “simple” C macro, as defined above. 
+   "type",             # Reference a C-language type. 
+   "class",            # see :cpp:type:
+   "func",             # see :cpp:type:
+   "member",           # see :cpp:type:
+   "type",             # Reference a C++ object
+   "func",             # see :js:attr:
+   "class",            # see :js:attr:
+   "data",             # see :js:attr:
+   "attr",             # no description
+   "dir",              # see :rst:role:
+   "role",             # no description
+   "ref",              # To support cross-referencing to arbitrary locations in any document, the standard reST labels are used
+   "doc",              # Link to the specified document; the document name can be specified in absolute or relative fashion
+   "download",         # This role lets you link to files within your source tree that are not reST documents that can be viewed, but files that can be downloaded
+   "envvar",           # An environment variable.  Index entries are generated
+   "token",            # The name of a grammar token (used to create links between productionlist directives)
+   "keyword",          # The name of a keyword in Python
+   "option",           # A command-line option to an executable program
+   "term",             # Reference to a term in the glossary
+   "abbr",             # An abbreviation
+   "command",          # The name of an OS-level command, such as rm
+   "dfn",              # Mark the defining instance of a term in the text
+   "file",             # The name of a file or directory
+   "guilabel",         # Labels presented as part of an interactive user interface should be marked using guilabel
+   "kbd",              # Mark a sequence of keystrokes
+   "mailheader",       # The name of an RFC 822-style mail header
+   "makevar",          # The name of a make variable. 
+   "manpage",          # A reference to a Unix manual page including the section, e.g. :manpage:`ls(1)`
+   "menuselection",    # Menu selections should be marked using the menuselection role.  This is used to mark a complete sequence of menu selections, including selecting submenus and choosing a specific operation, or any subsequence of such a sequence.  The names of individual selections should be separated by --&gt;
+   "mimetype",         # The name of a MIME type, or a component of a MIME type (the major or minor portion, taken alone)
+   "newsgroup",        # The name of a Usenet newsgroup
+   "program",          # The name of an executable program
+   "regexp",           # A regular expression
+   "samp",             # A piece of literal text, such as code.  Within the contents, you can use curly braces to indicate a “variable” part, as in file.  For example, in :samp:`print 1+{variable}`, the part variable would be emphasized
+   "pep",              # A reference to a Python Enhancement Proposal
+   "rfc",              # A reference to an Internet Request for Comments
+   "math",             # Role for inline math
+   "eq",               # Role for cross-referencing equations via their label
 ]
 
 sphinx_describe = [
@@ -145,15 +193,76 @@ sphinx_describe = [
 ]
 
 sphinx_function = [
-   'pathto',     # Return the path to a Sphinx document as a URL
-   'pathto',     # Return the path to a file which is a filename relative to the root of the generated output
-   'hasdoc',     # Check if a document with the name document exists
-   'sidebar',    # Return the rendered sidebar
-   'relbar',     # Return the rendered relation bar
+   "cut_lines",    # Return a listener that removes the first pre and last post lines of every docstring.  If what is a sequence of strings, only docstrings of a type in what will be processed
+   "between",      # Return a listener that either keeps, or if exclude is True excludes, lines between lines that match the marker regular expression
+   "pathto",       # Return the path to a Sphinx document as a URL
+   "pathto",       # Return the path to a file which is a filename relative to the root of the generated output
+   "hasdoc",       # Check if a document with the name document exists
+   "sidebar",      # Return the rendered sidebar
+   "relbar",       # Return the rendered relation bar
 ]
 
 sphinx_options = [
   'synopsis', 'height', 'width', 'scale', 'alt', 'align'
+]
+
+sphinx_event = [
+   "builder-inited",               # Emitted when the builder object has been created
+   "env-get-outdated",             # Emitted when the environment determines which source files have changed and should be re-read
+   "env-purge-doc",                # Emitted when all traces of a source file should be cleaned from the environment, that is, if the source file is removed or before it is freshly read
+   "source-read",                  # Emitted when a source file has been read
+   "doctree-read",                 # Emitted when a doctree has been parsed and read by the environment, and is about to be pickled
+   "missing-reference",            # Emitted when a cross-reference to a Python module or object cannot be resolved
+   "doctree-resolved",             # Emitted when a doctree has been “resolved” by the environment, that is, all references have been resolved and TOCs have been inserted
+   "env-updated",                  # Emitted when the update() method of the build environment has completed, that is, the environment and all doctrees are now up-to-date.  New in version 0
+   "html-collect-pages",           # Emitted when the HTML builder is starting to write non-document pages
+   "html-page-context",            # Emitted when the HTML builder has created a context dictionary to render a template with – this can be used to add custom elements to the context
+   "build-finished",               # Emitted when a build has finished, before Sphinx exits, usually used for cleanup
+   "autodoc-process-docstring",    #  New in version 0
+   "autodoc-process-signature",    #  New in version 0
+   "autodoc-skip-member",          #  New in version 0
+]
+
+sphinx_method = [
+   "add_builder",                # Register a new builder
+   "add_config_value",           # Register a configuration value.  This is necessary for Sphinx to recognize new values and set default values accordingly
+   "add_event",                  # Register an event called name.
+   "add_node",                   # Register a Docutils node class
+   "add_directive",              # Register a Docutils directive.  name must be the prospective directive name, func the directive function (see the Docutils documentation - XXX ref) for details about the signature and return value.  content, arguments and options are set as attributes on the function and determine whether the directive has content, arguments and options, respectively
+   "add_role",                   # Register a Docutils role.  name must be the role name that occurs in the source, role the role function (see the Docutils documentation on details)
+   "add_description_unit",       # XXX
+   "connect",                    # Register callback to be called when event is emitted
+   "disconnect",                 # Unregister callback listener_id
+   "emit",                       # Emit event and pass arguments to the callback functions
+   "setup_extension",            # Load the extension given by the module name.  Use this if your extension needs the features provided by another extension
+   "add_builder",                # Register a new builder
+   "add_config_value",           # Register a configuration value.  This is necessary for Sphinx to recognize new values and set default values accordingly
+   "add_domain",                 # Make the given domain (which must be a class; more precisely, a subclass of Domain) known to Sphinx
+   "override_domain",            # Make the given domain class known to Sphinx, assuming that there is already a domain with its 
+   "add_index_to_domain",        # Add a custom index class to the domain named domain
+   "add_event",                  # Register an event called name.  This is needed to be able to emit it
+   "add_node",                   # Register a Docutils node class
+   "add_directive",              # see Sphinx
+   "add_directive",              # Register a Docutils directive.  name must be the prospective directive name.  There are two possible ways to write a directive: In the docutils 0
+   "add_directive_to_domain",    # see Sphinx
+   "add_directive_to_domain",    # Like add_directive(), but the directive is added to the domain named domain
+   "add_role",                   # Register a Docutils role.  name must be the role name that occurs in the source, role the role function (see the Docutils documentation on details)
+   "add_role_to_domain",         # Like add_role(), but the role is added to the domain named domain
+   "add_generic_role",           # Register a Docutils role that does nothing but wrap its contents in the node given by nodeclass
+   "add_object_type",            # This method is a very convenient way to add a new object type that can be cross-referenced
+   "add_crossref_type",          # This method is very similar to add_object_type() except that the directive it generates must be empty, and will produce no output
+   "add_transform",              # Add the standard docutils Transform subclass transform to the list of transforms that are applied after Sphinx parses a reST document
+   "add_javascript",             # Add filename to the list of JavaScript files that the default HTML template will include.  The filename must be relative to the HTML static path, see the docs for the config value.  A full URI with scheme, like http://example.org/foo
+   "add_stylesheet",             # Add filename to the list of CSS files that the default HTML template will include.  Like for add_javascript(), the filename must be relative to the HTML static path, or a full URI with scheme.  New in version 1
+   "add_lexer",                  # Use lexer, which must be an instance of a Pygments lexer class, to highlight code blocks with the given language alias
+   "add_autodocumenter",         # Add cls as a new documenter class for the sphinx
+   "add_autodoc_attrgetter",     # Add getter, which must be a function with an interface compatible to the getattr() builtin, as the autodoc attribute getter for objects that are instances of type.  All cases where autodoc needs to get an attribute of a type are then handled by this function instead of getattr()
+   "add_search_language",        # Add cls, which must be a subclass of sphinx
+   "connect",                    # Register callback to be called when event is emitted
+   "disconnect",                 # Unregister callback listener_id
+   "emit",                       # Emit event and pass arguments to the callback functions
+   "emit_firstresult",           # Emit event and pass arguments to the callback functions
+   "require_sphinx",             # Compare version (which must be a major
 ]
 
 rest_elements = [
@@ -164,7 +273,7 @@ rest_directives = [
   'attention', 'caution', 'danger', 'error', 'hint', 'important', 'note', 'tip', 'warning', 'admonition', 'image', 'figure', 'topic', 'sidebar', 'parsed-literal', 'rubric', 'epigraph', 'highlights', 'pull-quote', 'compound', 'container', 'table', 'list-table', 'csv-table', 'contents', 'sectnum', 'header', 'footer', 'target-notes', 'meta', 'include', 'raw', 'replace', 'unicode', 'date', 'class', 'role', 'default-role', 'title'
 ]
 
-COMPLETIONS = (sphinx_data + sphinx_directives + sphinx_role + sphinx_describe + sphinx_function + sphinx_options + rest_directives + rest_elements).sort.uniq
+COMPLETIONS = (sphinx_data + sphinx_directives + sphinx_role + sphinx_describe + sphinx_function + sphinx_method + sphinx_options + sphinx_event + rest_directives + rest_elements).sort.uniq
 
 selection = COMPLETIONS.select { |e| e =~ Regexp.new("^#{ENV['TM_CURRENT_WORD']}") }
 
